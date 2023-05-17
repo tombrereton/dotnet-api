@@ -8,8 +8,12 @@ Appointer is built with .NET 6.
 
 ## Prerequisites
 
-- .NET 6 SDK
-- Docker for Mac/Windows/Linux
+- .NET 7 SDK
+- The LATEST Docker for [Mac](https://docs.docker.com/desktop/install/mac-install/)/[Windows](https://docs.docker.com/desktop/install/windows-install/)
+
+On Mac enable Rosetta in the beta features as shown in the image below:
+
+![Enable Rosetta](./imgs/dockerForMac.png)
 
 ## Note
 
