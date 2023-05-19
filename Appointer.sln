@@ -7,6 +7,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{A5781BA3-75E1-471A-B2D8-FFA6EEEDBD5B}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{DC36BD6E-301B-4C03-970E-6869B7907B0F}"
