@@ -86,3 +86,21 @@ When a user deletes appointment Z
 Then appointment Z is not active
 ```
 
+```
+Given there is an account for user A
+And there is a calendar for user A
+And there is an appointment Z at 11am
+When a user creates another appointment X at 11am
+Then appointment X is also persisted
+```
+
+```
+Given there is an account for user A
+And there is a calendar for user A
+And there is an appointment Z at 11am
+And there is an appointment X at 11am
+When a user gets all appointments
+Then all appoints can be viewed
+And the conflicting appointments can also be viewed
+```
+
