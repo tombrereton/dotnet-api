@@ -24,5 +24,22 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+      
+    - run: mkdir -p ~/image-cache
+    
+    - id: image-cache
+      uses: actions/cache@v1
+      with:
+        path: ~/image-cache
+        key: image-cache-${{ runner.os }}
+
+    - if: steps.image-cache.outputs.cache-hit != 'true'
+      run: |
+        docker pull mcr.microsoft.com/mssql/server:2019-CU18-ubuntu-20.04
+        docker save -o ~/image-cache/mssql.tar alpine
+
+    - if: steps.image-cache.outputs.cache-hit == 'true'
+      run: docker load -i ~/image-cache/mssql.tar
+    
     - name: Test
       run: dotnet test --no-build --verbosity normal

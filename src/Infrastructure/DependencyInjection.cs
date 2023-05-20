@@ -1,5 +1,4 @@
-﻿using Appointer.Infrastructure.Configuration;
-using Appointer.Infrastructure.DbContext;
+﻿using Appointer.Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
