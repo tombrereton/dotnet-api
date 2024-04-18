@@ -5,13 +5,13 @@ using Appointer.Api.Responses;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace Appointer.Api.IntegrationTests;
+namespace Appointer.Api.IntegrationTests.Accounts;
 
-public class AccountControllerShould : IClassFixture<WebApplicationFactory<Program>>
+public class AccountsShould : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly WebApplicationFactory<Program> _factory;
 
-    public AccountControllerShould(WebApplicationFactory<Program> factory)
+    public AccountsShould(WebApplicationFactory<Program> factory)
     {
         _factory = factory;
     }

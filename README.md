@@ -1,26 +1,30 @@
 # Introduction
+To showcase my preferred patterns and practices, I have created a simple appointment scheduling api that allows 
+users to create, edit, and delete appointments to a calendar. Users can also create an account and a calendar.
+An appointment is an object which is added to a calendar, and that calendar is associated with a user account.
 
-Appointer is a simple appointment scheduling api that allows users to create, edit,
-and delete appointments to a calendar.
-Appointer is built with .NET 6.
+## Technologies
+- Testcontainers
+- xUnit
+- EF Core for writing to the datastore
+- Dapper for reading from the datastore
+- FluentValidation 
+- Serilog
 
-# Getting Started
+## Patterns
+- Clean Architecture
+- CQRS
+- Repository Pattern
+- Feature Folders
 
 ## Prerequisites
 
-- .NET 7 SDK
+- .NET 8 SDK
 - The LATEST Docker for [Mac](https://docs.docker.com/desktop/install/mac-install/)/[Windows](https://docs.docker.com/desktop/install/windows-install/)
 
 On Mac enable Rosetta in the beta features as shown in the image below:
 
 ![Enable Rosetta](./imgs/dockerForMac.png)
-
-## Note
-
-- The application does not run yet! This is the starting point for the exercise
-- An example test is included to show how to write tests using EF Core & Testcontainers
-
-## The Exercise
 
 We will build a basic online appointment api. The api will allow users to create an account
 with an associated calendar. Then users can create, modify & view appointments in that
