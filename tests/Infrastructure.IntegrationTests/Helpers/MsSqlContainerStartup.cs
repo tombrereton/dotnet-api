@@ -5,7 +5,7 @@ using Testcontainers.MsSql;
 
 namespace Appointer.Infrastructure.IntegrationTests.Helpers;
 
-public class SqlContainerStartup : IAsyncLifetime
+public class MsSqlContainerStartup : IAsyncLifetime
 {
     private readonly MsSqlContainer _msSqlContainer = new MsSqlBuilder().Build();
     protected ServiceProvider Services = null!;
@@ -25,7 +25,7 @@ public class SqlContainerStartup : IAsyncLifetime
             .AddInfrastructure(config)
             .BuildServiceProvider();
 
-        var db = Services.GetRequiredService<TodoDbContext>();
+        var db = Services.GetRequiredService<AppointerDbContext>();
         await db.Database.EnsureCreatedAsync();
     }
 

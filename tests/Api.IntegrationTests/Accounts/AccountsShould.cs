@@ -1,21 +1,25 @@
 using System.Net;
 using System.Net.Http.Json;
+using Appointer.Api.IntegrationTests.Helpers;
 using Appointer.Api.Requests;
 using Appointer.Api.Responses;
+using Appointer.Infrastructure.DbContext;
 using FluentAssertions;
+using FluentAssertions.Common;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Appointer.Api.IntegrationTests.Accounts;
 
-public class AccountsShould : IClassFixture<WebApplicationFactory<Program>>
+public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Program>>
 {
     private readonly WebApplicationFactory<Program> _factory;
 
-    public AccountsShould(WebApplicationFactory<Program> factory)
+    public AccountsShould(AppointerWebApplicationFactory<Program> factory)
     {
         _factory = factory;
     }
-    
+
     [Fact]
     public async Task CreateAccount()
     {
@@ -34,5 +38,12 @@ public class AccountsShould : IClassFixture<WebApplicationFactory<Program>>
         response.Should().NotBeNull();
         response!.Id.Should().NotBeEmpty();
         response.FullName.Should().Be(fullName);
+
+
+        using var scope = _factory.Services.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
+        var newItem = await dbContext.UserAccounts.FindAsync(response.Id);
+        newItem.Should().NotBeNull();
+        newItem.FullName.Should().Be(fullName);
     }
 }

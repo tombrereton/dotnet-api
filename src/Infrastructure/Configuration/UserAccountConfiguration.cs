@@ -1,12 +1,12 @@
-using Appointer.Infrastructure.Entities;
+using Appointer.Domain.Accounts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Appointer.Infrastructure.Configuration;
 
-public class TodoItemConfiguration : IEntityTypeConfiguration<TodoItem>
+public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
 {
-    public void Configure(EntityTypeBuilder<TodoItem> builder)
+    public void Configure(EntityTypeBuilder<UserAccount> builder)
     {
         builder
             .HasKey(x => x.Id);
@@ -16,15 +16,15 @@ public class TodoItemConfiguration : IEntityTypeConfiguration<TodoItem>
             .ValueGeneratedNever();
 
         builder
-            .Property(x => x.Title)
+            .Property(x => x.FullName)
             .IsRequired();
 
         builder
-            .Property(x => x.Description)
-            .HasMaxLength(2000);
+            .Property(x => x.IsActive)
+            .HasDefaultValue(true);
 
         builder
-            .Property(x => x.Done)
-            .IsRequired();
+            .Property(x => x.IsDeleted)
+            .HasDefaultValue(false);
     }
 }
