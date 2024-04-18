@@ -1,8 +1,9 @@
 using System.Net;
 using System.Net.Http.Json;
+using Appointer.Api.AccountEndpoints.Get;
 using Appointer.Api.IntegrationTests.Helpers;
-using Appointer.Api.Requests;
-using Appointer.Api.Responses;
+using Appointer.Api.UserAccountEndpoints.Create;
+using Appointer.Domain.Accounts;
 using Appointer.Infrastructure.DbContext;
 using FluentAssertions;
 using FluentAssertions.Common;
@@ -21,11 +22,11 @@ public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Progr
     }
 
     [Fact]
-    public async Task CreateAccount()
+    public async Task BeCreatedAndPersisted()
     {
         // arrange
         var client = _factory.CreateClient();
-        var url = "api/account";
+        var url = "api/accounts";
         var fullName = "Full Name";
         var request = new CreateAccountRequest(fullName);
 
@@ -39,11 +40,38 @@ public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Progr
         response!.Id.Should().NotBeEmpty();
         response.FullName.Should().Be(fullName);
 
-
         using var scope = _factory.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
-        var newItem = await dbContext.UserAccounts.FindAsync(response.Id);
-        newItem.Should().NotBeNull();
-        newItem.FullName.Should().Be(fullName);
+        var newUserAccount = await dbContext.UserAccounts.FindAsync(response.Id);
+        newUserAccount.Should().NotBeNull();
+        newUserAccount.FullName.Should().Be(fullName);
+    }
+    
+    [Fact]
+    public async Task GetExistingAccount()
+    {
+        // arrange
+        var cts = new CancellationTokenSource();
+        cts.CancelAfter(TimeSpan.FromSeconds(30));
+        var cancellationToken = cts.Token;
+            
+        using var scope = _factory.Services.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
+        var userAccount = new UserAccount(Guid.NewGuid(), "Existing User");
+        await dbContext.UserAccounts.AddAsync(userAccount, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
+        
+        var client = _factory.CreateClient();
+        var url = "api/accounts/" + userAccount.Id;
+
+        // act
+        var result = await client.GetAsync(url, cancellationToken);
+
+        // assert
+        result.StatusCode.Should().Be(HttpStatusCode.OK);
+        var response = await result.Content.ReadFromJsonAsync<GetAccountResponse>(cancellationToken);
+        response.Should().NotBeNull();
+        response!.Id.Should().NotBeEmpty();
+        response.FullName.Should().Be(userAccount.FullName);
     }
 }
