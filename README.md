@@ -3,7 +3,7 @@ To showcase my preferred patterns and practices, I have created a simple appoint
 users to create, edit, and delete appointments to a calendar. Users can also create an account and a calendar.
 An appointment is an object which is added to a calendar, and that calendar is associated with a user account.
 
-# To Do
+## To Do
 - REPR
 - Validation
 - Logging
