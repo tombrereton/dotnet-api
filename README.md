@@ -3,6 +3,14 @@ To showcase my preferred patterns and practices, I have created a simple appoint
 users to create, edit, and delete appointments to a calendar. Users can also create an account and a calendar.
 An appointment is an object which is added to a calendar, and that calendar is associated with a user account.
 
+# To Do
+- REPR
+- Validation
+- Logging
+- Error Handling
+- CQRS
+- Clean Architecture 
+
 ## Technologies
 - Testcontainers
 - xUnit
@@ -14,11 +22,11 @@ An appointment is an object which is added to a calendar, and that calendar is a
 ## Patterns
 - Clean Architecture
 - CQRS
+- REPR (Request Endpoint Response)
 - Repository Pattern
 - Feature Folders
 
 ## Prerequisites
-
 - .NET 8 SDK
 - The LATEST Docker for [Mac](https://docs.docker.com/desktop/install/mac-install/)/[Windows](https://docs.docker.com/desktop/install/windows-install/)
 
