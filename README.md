@@ -7,7 +7,8 @@ Users create an account and a calendar; Appointments are then added to the calen
 Appointments can be updated and deleted.
 
 ## To Do
-
+- Move handler logic (use case) out of controller into a handler
+- Consider using Repositories instead of DbContext directly
 - REPR
 - Validation
 - Logging
