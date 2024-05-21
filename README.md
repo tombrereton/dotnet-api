@@ -1,25 +1,31 @@
 # Introduction
-To showcase my preferred patterns and practices, I have created a simple appointment scheduling api that allows 
-users to create, edit, and delete appointments to a calendar. Users can also create an account and a calendar.
-An appointment is an object which is added to a calendar, and that calendar is associated with a user account.
+
+To showcase my preferred patterns and practices, I have created a simple appointment scheduling api that allows
+users to create, edit, and delete appointments to a calendar.
+
+Users create an account and a calendar; Appointments are then added to the calendar.
+Appointments can be updated and deleted.
 
 ## To Do
+
 - REPR
 - Validation
 - Logging
 - Error Handling
 - CQRS
-- Clean Architecture 
+- Clean Architecture
 
 ## Technologies
+
 - Testcontainers
 - xUnit
 - EF Core for writing to the datastore
 - Dapper for reading from the datastore
-- FluentValidation 
+- FluentValidation
 - Serilog
 
 ## Patterns
+
 - Clean Architecture
 - CQRS
 - REPR (Request Endpoint Response)
@@ -27,8 +33,10 @@ An appointment is an object which is added to a calendar, and that calendar is a
 - Feature Folders
 
 ## Prerequisites
+
 - .NET 8 SDK
-- The LATEST Docker for [Mac](https://docs.docker.com/desktop/install/mac-install/)/[Windows](https://docs.docker.com/desktop/install/windows-install/)
+- The LATEST Docker
+  for [Mac](https://docs.docker.com/desktop/install/mac-install/)/[Windows](https://docs.docker.com/desktop/install/windows-install/)
 
 On Mac enable Rosetta in the beta features as shown in the image below:
 
@@ -46,8 +54,9 @@ calendar. We will ignore authentication in this exercise.
 - Run `dotnet test` from the root of the project
 
 # Requirements
+
 The requirements are written in the Given When Then format. This is a common format used
-for acceptance criteria & tests. The requirements are written in a way that is not specific to any 
+for acceptance criteria & tests. The requirements are written in a way that is not specific to any
 particular technology. This allows us to write the tests first and then implement the
 functionality to make the tests pass.
 
