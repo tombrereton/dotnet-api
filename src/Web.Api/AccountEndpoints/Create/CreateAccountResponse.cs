@@ -1,3 +1,3 @@
-namespace Appointer.Api.UserAccountEndpoints.Create;
+namespace Web.Api.AccountEndpoints.Create;
 
 public record CreateAccountResponse(Guid Id, string FullName);

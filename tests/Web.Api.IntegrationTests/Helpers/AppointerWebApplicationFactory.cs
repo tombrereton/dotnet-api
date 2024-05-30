@@ -1,4 +1,4 @@
-using Appointer.Infrastructure.DbContext;
+using Infrastructure.DbContext;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.MsSql;
 
-namespace Appointer.Api.IntegrationTests.Helpers;
+namespace Web.Api.IntegrationTests.Helpers;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public class AppointerWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLifetime

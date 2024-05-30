@@ -1,9 +1,8 @@
-using Appointer.Api.UserAccountEndpoints.Create;
-using Appointer.Domain.Accounts;
-using Appointer.Infrastructure.DbContext;
+using Domain.Accounts;
+using Infrastructure.DbContext;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Appointer.Api.AccountEndpoints.Create;
+namespace Web.Api.AccountEndpoints.Create;
 
 [ApiController]
 public class AccountsController(AppointerDbContext dbContext) : ControllerBase

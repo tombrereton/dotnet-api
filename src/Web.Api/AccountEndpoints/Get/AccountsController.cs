@@ -1,7 +1,7 @@
-using Appointer.Infrastructure.DbContext;
+using Infrastructure.DbContext;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Appointer.Api.AccountEndpoints.Get;
+namespace Web.Api.AccountEndpoints.Get;
 
 [ApiController]
 public class AccountsController(AppointerDbContext dbContext) : ControllerBase

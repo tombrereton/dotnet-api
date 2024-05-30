@@ -5,8 +5,6 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-        <AssemblyName>Appointer.Api</AssemblyName>
-        <RootNamespace>Appointer.Api</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

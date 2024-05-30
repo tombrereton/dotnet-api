@@ -1,8 +1,8 @@
-using Appointer.Domain.Accounts;
+using Domain.Accounts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Appointer.Infrastructure.Configuration;
+namespace Infrastructure.Configuration;
 
 public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
 {

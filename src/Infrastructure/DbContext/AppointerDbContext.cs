@@ -1,7 +1,7 @@
-using Appointer.Domain.Accounts;
+using Domain.Accounts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Appointer.Infrastructure.DbContext;
+namespace Infrastructure.DbContext;
 
 public class AppointerDbContext : Microsoft.EntityFrameworkCore.DbContext
 {

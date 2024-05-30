@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Appointer.Api.IntegrationTests.Helpers;
+namespace Web.Api.IntegrationTests.Helpers;
 
 public static class ServiceCollectionExtensions
 {

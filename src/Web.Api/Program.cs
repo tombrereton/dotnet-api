@@ -1,4 +1,4 @@
-using Appointer.Infrastructure;
+using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,9 +20,4 @@ app.UseAuthorization();
 app.MapControllers();
 app.Run();
 
-namespace Appointer.Api
-{
-    public partial class Program
-    {
-    }
-}
+public partial class Program;

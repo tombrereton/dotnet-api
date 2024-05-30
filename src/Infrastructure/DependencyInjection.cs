@@ -1,9 +1,9 @@
-﻿using Appointer.Infrastructure.DbContext;
+﻿using Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Appointer.Infrastructure;
+namespace Infrastructure;
 
 public static class DependencyInjection
 {

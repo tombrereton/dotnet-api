@@ -7,8 +7,6 @@
 
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
-        <AssemblyName>Appointer.Api.IntegrationTests</AssemblyName>
-        <RootNamespace>Appointer.Api.IntegrationTests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -29,7 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Api\Api.csproj" />
+      <ProjectReference Include="..\..\src\Web.Api\Web.Api.csproj" />
     </ItemGroup>
 
 </Project>
