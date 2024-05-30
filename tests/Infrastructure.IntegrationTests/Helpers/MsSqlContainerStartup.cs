@@ -1,9 +1,9 @@
-using Appointer.Infrastructure.DbContext;
+using Infrastructure.DbContext;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.MsSql;
 
-namespace Appointer.Infrastructure.IntegrationTests.Helpers;
+namespace Infrastructure.IntegrationTests.Helpers;
 
 public class MsSqlContainerStartup : IAsyncLifetime
 {

@@ -5,8 +5,6 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
-        <AssemblyName>Appointer.Infrastructure.IntegrationTests</AssemblyName>
-        <RootNamespace>Appointer.Infrastructure.IntegrationTests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

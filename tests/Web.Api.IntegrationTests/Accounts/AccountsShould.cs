@@ -1,16 +1,15 @@
 using System.Net;
 using System.Net.Http.Json;
-using Appointer.Api.AccountEndpoints.Get;
-using Appointer.Api.IntegrationTests.Helpers;
-using Appointer.Api.UserAccountEndpoints.Create;
-using Appointer.Domain.Accounts;
-using Appointer.Infrastructure.DbContext;
+using Domain.Accounts;
 using FluentAssertions;
-using FluentAssertions.Common;
+using Infrastructure.DbContext;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using Web.Api.AccountEndpoints.Create;
+using Web.Api.AccountEndpoints.Get;
+using Web.Api.IntegrationTests.Helpers;
 
-namespace Appointer.Api.IntegrationTests.Accounts;
+namespace Web.Api.IntegrationTests.Accounts;
 
 public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Program>>
 {
