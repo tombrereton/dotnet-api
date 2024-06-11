@@ -1,6 +1,6 @@
 # Introduction
 
-I have created a simple appointment scheduling api to demonstrate some preffered patterns and practices.
+I have created a simple appointment scheduling api to demonstrate some preferred patterns and practices.
 
 Users create an account with a default calendar and can add, remove, update or delete events to this calendar.
 Users can only have 1 account but can have multiple calendars.
