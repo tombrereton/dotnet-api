@@ -1,10 +1,9 @@
 # Introduction
 
-To showcase my preferred patterns and practices, I have created a simple appointment scheduling api that allows
-users to create, edit, and delete appointments to a calendar.
+I have created a simple appointment scheduling api to demonstrate some preffered patterns and practices.
 
-Users create an account and a calendar; Appointments are then added to the calendar.
-Appointments can be updated and deleted.
+Users create an account with a default calendar and can add, remove, update or delete events to this calendar.
+Users can only have 1 account but can have multiple calendars.
 
 ## To Do
 - Move handler logic (use case) out of controller into a handler
