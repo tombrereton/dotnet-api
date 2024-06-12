@@ -4,7 +4,7 @@ using Web.Api.Database;
 using Web.Api.Domain.Accounts;
 using Web.Api.IntegrationTests.Helpers;
 
-namespace Web.Api.IntegrationTests.DbContext;
+namespace Web.Api.IntegrationTests.Database;
 
 public class AppointerDbContextShould : MsSqlContainerStartup
 {

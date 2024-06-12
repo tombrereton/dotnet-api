@@ -8,7 +8,7 @@ using Web.Api.Domain.Accounts;
 using Web.Api.Features.Accounts;
 using Web.Api.IntegrationTests.Helpers;
 
-namespace Web.Api.IntegrationTests.Accounts;
+namespace Web.Api.IntegrationTests.Features;
 
 public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Program>>
 {

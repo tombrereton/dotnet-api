@@ -5,12 +5,29 @@ using Web.Api.Shared;
 
 namespace Web.Api.Features.Accounts;
 
+public class GetAccountEndpoint : ICarterModule
+{
+    public void AddRoutes(IEndpointRouteBuilder app)
+    {
+        app.MapGet("api/accounts/{id}", async (Guid id, ISender sender, CancellationToken cancellationToken) =>
+        {
+            var query = new GetAccount.Query(id);
+
+            var result = await sender.Send(query, cancellationToken);
+
+            if (result.IsFailure)
+            {
+                return Results.NotFound(result.Error);
+            }
+
+            return Results.Ok(result.Value);
+        });
+    }
+}
+
 public static class GetAccount
 {
-    public class Query : IRequest<Result<GetAccountResponse>>
-    {
-        public Guid Id { get; set; }
-    }
+    public record Query(Guid Id) : IRequest<Result<GetAccountResponse>>;
 
     public record GetAccountResponse(Guid Id, string FullName);
 
@@ -39,22 +56,3 @@ public static class GetAccount
     }
 }
 
-public class GetAccountEndpoint : ICarterModule
-{
-    public void AddRoutes(IEndpointRouteBuilder app)
-    {
-        app.MapGet("api/accounts/{id}", async (Guid id, ISender sender, CancellationToken cancellationToken) =>
-        {
-            var query = new GetAccount.Query { Id = id };
-
-            var result = await sender.Send(query, cancellationToken);
-
-            if (result.IsFailure)
-            {
-                return Results.NotFound(result.Error);
-            }
-
-            return Results.Ok(result.Value);
-        });
-    }
-}

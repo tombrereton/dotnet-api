@@ -17,18 +17,18 @@ public class CreateAccountEndpoint : ICarterModule
             var result = await sender.Send(command, cancellationToken);
 
             if (result.IsFailure)
+            {
                 return Results.BadRequest(result.Error);
+            }
 
             return Results.Ok(result.Value);
         });
     }
 }
+
 public static class CreateAccount
 {
-    public class Command : IRequest<Result<CreateAccountResponse>>
-    {
-        public string FullName { get; set; } = string.Empty;
-    }
+    public record Command(string Fullname) : IRequest<Result<CreateAccountResponse>>;
 
     public record CreateAccountResponse(Guid Id, string FullName);
 
@@ -43,7 +43,7 @@ public static class CreateAccount
 
         public async Task<Result<CreateAccountResponse>> Handle(Command request, CancellationToken cancellationToken)
         {
-            var userAccount = new UserAccount(Guid.NewGuid(), request.FullName);
+            var userAccount = new UserAccount(Guid.NewGuid(), request.Fullname);
             await _dbContext.UserAccounts.AddAsync(userAccount, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);
             return new CreateAccountResponse(userAccount.Id, userAccount.FullName);
