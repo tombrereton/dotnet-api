@@ -28,19 +28,23 @@ jobs:
     - name: 📦 Dotnet Build
       run: dotnet build --no-restore
       
-    - run: mkdir -p ~/image-cache
+    - name: 🔧 Setup Cache Folder
+      run: mkdir -p ~/image-cache
     
+    - name: 🔧 Try Get Cache
     - id: image-cache
       uses: actions/cache@v1
       with:
         path: ~/image-cache
         key: image-cache-${{ runner.os }}
 
+    - name: 🔧 If Cache miss
     - if: steps.image-cache.outputs.cache-hit != 'true'
       run: |
         docker pull mcr.microsoft.com/mssql/server:2019-CU18-ubuntu-20.04
         docker save -o ~/image-cache/mssql.tar alpine
 
+    - name: 🔧 If Cache hit
     - if: steps.image-cache.outputs.cache-hit == 'true'
       run: docker load -i ~/image-cache/mssql.tar
     
