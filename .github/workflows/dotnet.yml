@@ -17,15 +17,15 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       
-    - name: Setup .NET
+    - name: 📦 Setup Dotnet
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
         
-    - name: Restore dependencies
+    - name: 📦 Dotnet Restore
       run: dotnet restore
       
-    - name: Build
+    - name: 📦 Dotnet Build
       run: dotnet build --no-restore
       
     - run: mkdir -p ~/image-cache
@@ -44,5 +44,5 @@ jobs:
     - if: steps.image-cache.outputs.cache-hit == 'true'
       run: docker load -i ~/image-cache/mssql.tar
     
-    - name: Test
+    - name: 🤞 Dotnet Test
       run: dotnet test --no-build --verbosity normal
