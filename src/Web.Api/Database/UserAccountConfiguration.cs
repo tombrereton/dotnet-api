@@ -1,8 +1,8 @@
-using Domain.Accounts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Web.Api.Domain.Accounts;
 
-namespace Infrastructure.Configuration;
+namespace Web.Api.Database;
 
 public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
 {

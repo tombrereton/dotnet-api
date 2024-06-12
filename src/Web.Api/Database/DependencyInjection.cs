@@ -1,9 +1,6 @@
-﻿using Infrastructure.DbContext;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure;
+namespace Web.Api.Database;
 
 public static class DependencyInjection
 {

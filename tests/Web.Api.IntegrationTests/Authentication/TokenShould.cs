@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using FluentAssertions;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Infrastructure.IntegrationTests.Authentication;
+namespace Web.Api.IntegrationTests.Authentication;
 
 public class TokenShould
 {

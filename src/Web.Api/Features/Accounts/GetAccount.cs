@@ -1,7 +1,6 @@
 using Carter;
-using Infrastructure.DbContext;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
+using Web.Api.Database;
 using Web.Api.Shared;
 
 namespace Web.Api.Features.Accounts;

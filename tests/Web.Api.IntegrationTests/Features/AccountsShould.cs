@@ -1,10 +1,10 @@
 using System.Net;
 using System.Net.Http.Json;
-using Domain.Accounts;
 using FluentAssertions;
-using Infrastructure.DbContext;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using Web.Api.Database;
+using Web.Api.Domain.Accounts;
 using Web.Api.Features.Accounts;
 using Web.Api.IntegrationTests.Helpers;
 

@@ -1,10 +1,10 @@
-using Domain.Accounts;
 using FluentAssertions;
-using Infrastructure.DbContext;
-using Infrastructure.IntegrationTests.Helpers;
 using Microsoft.Extensions.DependencyInjection;
+using Web.Api.Database;
+using Web.Api.Domain.Accounts;
+using Web.Api.IntegrationTests.Helpers;
 
-namespace Infrastructure.IntegrationTests.DbContext;
+namespace Web.Api.IntegrationTests.DbContext;
 
 public class AppointerDbContextShould : MsSqlContainerStartup
 {
