@@ -1,7 +1,7 @@
 using Carter;
 using MediatR;
-using Web.Api.Database;
-using Web.Api.Shared;
+using Web.Api.Common;
+using Web.Api.Infrastructure.Database;
 
 namespace Web.Api.Features.Accounts;
 
@@ -12,7 +12,6 @@ public class GetAccountEndpoint : ICarterModule
         app.MapGet("api/accounts/{id}", async (Guid id, ISender sender, CancellationToken cancellationToken) =>
         {
             var query = new GetAccount.Query(id);
-
             var result = await sender.Send(query, cancellationToken);
 
             if (result.IsFailure)

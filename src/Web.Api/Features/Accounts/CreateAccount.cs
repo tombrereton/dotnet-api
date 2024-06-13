@@ -1,9 +1,10 @@
 using Carter;
+using FluentValidation;
 using Mapster;
 using MediatR;
-using Web.Api.Database;
+using Web.Api.Common;
 using Web.Api.Domain.Accounts;
-using Web.Api.Shared;
+using Web.Api.Infrastructure.Database;
 
 namespace Web.Api.Features.Accounts;
 
@@ -31,6 +32,14 @@ public static class CreateAccount
     public record Command(string Fullname) : IRequest<Result<CreateAccountResponse>>;
 
     public record CreateAccountResponse(Guid Id, string FullName);
+
+    public class Validator : AbstractValidator<Command>
+    {
+        public Validator()
+        {
+            RuleFor(c => c.Fullname).NotEmpty();
+        }
+    }
 
     internal sealed class Handler : IRequestHandler<Command, Result<CreateAccountResponse>>
     {

@@ -1,5 +1,5 @@
 using Carter;
-using Web.Api.Database;
+using Web.Api.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

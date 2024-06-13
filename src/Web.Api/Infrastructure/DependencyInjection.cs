@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Web.Api.Infrastructure.Database;
 
-namespace Web.Api.Database;
+namespace Web.Api.Infrastructure;
 
 public static class DependencyInjection
 {

@@ -1,4 +1,4 @@
-﻿namespace Web.Api.Shared;
+﻿namespace Web.Api.Common;
 
 public class Result
 {

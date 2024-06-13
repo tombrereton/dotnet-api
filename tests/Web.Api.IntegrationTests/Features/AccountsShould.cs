@@ -3,9 +3,9 @@ using System.Net.Http.Json;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using Web.Api.Database;
 using Web.Api.Domain.Accounts;
 using Web.Api.Features.Accounts;
+using Web.Api.Infrastructure.Database;
 using Web.Api.IntegrationTests.Helpers;
 
 namespace Web.Api.IntegrationTests.Features;
@@ -26,7 +26,7 @@ public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Progr
         var client = _factory.CreateClient();
         var url = "api/accounts";
         var fullName = "Full Name";
-        var request = new CreateAccount.Command { FullName = fullName };
+        var request = new CreateAccount.Command(fullName);
 
         // act
         var result = await client.PostAsJsonAsync(url, request);

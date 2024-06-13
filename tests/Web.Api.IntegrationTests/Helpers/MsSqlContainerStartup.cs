@@ -1,7 +1,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.MsSql;
-using Web.Api.Database;
+using Web.Api.Infrastructure;
+using Web.Api.Infrastructure.Database;
 
 namespace Web.Api.IntegrationTests.Helpers;
 
