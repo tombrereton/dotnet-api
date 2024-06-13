@@ -30,7 +30,7 @@ public static class GetAccount
 
     public record GetAccountResponse(Guid Id, string FullName);
 
-    internal sealed class Handler : IRequestHandler<Query, Result<GetAccountResponse>>
+    public sealed class Handler : IRequestHandler<Query, Result<GetAccountResponse>>
     {
         private readonly AppointerDbContext _dbContext;
 

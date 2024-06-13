@@ -26,7 +26,7 @@ public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Progr
         var client = _factory.CreateClient();
         var url = "api/accounts";
         var fullName = "Full Name";
-        var request = new CreateAccount.Command(fullName);
+        var request = new CreateAccount.Command(FullName: fullName);
 
         // act
         var result = await client.PostAsJsonAsync(url, request);
@@ -42,7 +42,7 @@ public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Progr
         var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
         var newUserAccount = await dbContext.UserAccounts.FindAsync(response.Id);
         newUserAccount.Should().NotBeNull();
-        newUserAccount.FullName.Should().Be(fullName);
+        newUserAccount?.FullName.Should().Be(fullName);
     }
 
     [Fact]

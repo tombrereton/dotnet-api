@@ -29,7 +29,7 @@ public class CreateAccountEndpoint : ICarterModule
 
 public static class CreateAccount
 {
-    public record Command(string Fullname) : IRequest<Result<CreateAccountResponse>>;
+    public record Command(string FullName) : IRequest<Result<CreateAccountResponse>>;
 
     public record CreateAccountResponse(Guid Id, string FullName);
 
@@ -37,22 +37,32 @@ public static class CreateAccount
     {
         public Validator()
         {
-            RuleFor(c => c.Fullname).NotEmpty();
+            RuleFor(c => c.FullName).NotEmpty();
         }
     }
 
-    internal sealed class Handler : IRequestHandler<Command, Result<CreateAccountResponse>>
+    public sealed class Handler : IRequestHandler<Command, Result<CreateAccountResponse>>
     {
         private readonly AppointerDbContext _dbContext;
+        private readonly IValidator<Command> _validator;
 
-        public Handler(AppointerDbContext dbContext)
+        public Handler(AppointerDbContext dbContext, IValidator<Command> validator)
         {
             _dbContext = dbContext;
+            _validator = validator;
         }
 
         public async Task<Result<CreateAccountResponse>> Handle(Command request, CancellationToken cancellationToken)
         {
-            var userAccount = new UserAccount(Guid.NewGuid(), request.Fullname);
+            var validationResult = _validator.Validate(request);
+            if (!validationResult.IsValid)
+            {
+                return Result.Failure<CreateAccountResponse>(new Error(
+                    "CreateAccount.Validation",
+                    validationResult.ToString()));
+            }
+
+            var userAccount = new UserAccount(Guid.NewGuid(), request.FullName);
             await _dbContext.UserAccounts.AddAsync(userAccount, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);
             return new CreateAccountResponse(userAccount.Id, userAccount.FullName);
