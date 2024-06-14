@@ -1,12 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Web.Api.Domain.Accounts;
+using Web.Api.Domain.Calendars;
 
 namespace Web.Api.Infrastructure.Database;
 
-public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
+public class CalendarConfiguration : IEntityTypeConfiguration<Calendar>
 {
-    public void Configure(EntityTypeBuilder<UserAccount> builder)
+    public void Configure(EntityTypeBuilder<Calendar> builder)
     {
         builder
             .HasKey(x => x.Id);
@@ -16,20 +17,12 @@ public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
             .ValueGeneratedNever();
 
         builder
-            .Property(x => x.FullName)
+            .Property(x => x.Name)
             .IsRequired();
 
         builder
-            .Property(x => x.IsActive)
-            .HasDefaultValue(true);
-
-        builder
-            .Property(x => x.IsDeleted)
-            .HasDefaultValue(false);
-
-        builder
-            .HasMany(x => x.Calendars)
-            .WithOne(x => x.UserAccount)
+            .HasOne(x => x.UserAccount)
+            .WithMany(x => x.Calendars)
             .HasForeignKey(x => x.UserAccountId)
             .IsRequired();
 
