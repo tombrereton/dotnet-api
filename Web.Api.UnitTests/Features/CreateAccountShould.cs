@@ -1,5 +1,4 @@
 using FluentAssertions;
-using FluentValidation;
 using Moq;
 using Web.Api.Features.Accounts;
 using Web.Api.Infrastructure.Database;
@@ -23,7 +22,7 @@ namespace Web.Api.UnitTests.Features
             // assert
             result.IsFailure.Should().BeTrue();
             result.Error.Code.Should().Contain("Validation");
-            result.Error.Message.Should().NotBeEmpty();
+            result.Error.Message.Should().Contain("Full Name");
         }
     }
 }

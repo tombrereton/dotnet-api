@@ -14,8 +14,7 @@ public class CreateAccountEndpoint : ICarterModule
     {
         app.MapPost("api/accounts", async (CreateAccount.Command request, ISender sender, CancellationToken cancellationToken) =>
         {
-            var command = request.Adapt<CreateAccount.Command>();
-            var result = await sender.Send(command, cancellationToken);
+            var result = await sender.Send(request, cancellationToken);
 
             if (result.IsFailure)
             {
@@ -54,7 +53,7 @@ public static class CreateAccount
 
         public async Task<Result<CreateAccountResponse>> Handle(Command request, CancellationToken cancellationToken)
         {
-            var validationResult = _validator.Validate(request);
+            var validationResult = await _validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
                 return Result.Failure<CreateAccountResponse>(new Error(
