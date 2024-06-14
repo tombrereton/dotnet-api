@@ -55,7 +55,7 @@ public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Progr
 
         using var scope = _factory.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
-        var userAccount = new UserAccount(Guid.NewGuid(), "Existing User");
+        var userAccount = UserAccount.Create("John Doe");
         await dbContext.UserAccounts.AddAsync(userAccount, cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);
 

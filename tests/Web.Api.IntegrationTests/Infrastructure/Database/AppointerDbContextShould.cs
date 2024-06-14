@@ -13,7 +13,7 @@ public class AppointerDbContextShould : MsSqlContainerStartup
     {
         // arrange
         var dbContext = Services.GetRequiredService<AppointerDbContext>();
-        var userAccount = new UserAccount(Guid.NewGuid(), "Full Name");
+        var userAccount = UserAccount.Create("John Doe");
 
         // act
         dbContext.UserAccounts.Add(userAccount);

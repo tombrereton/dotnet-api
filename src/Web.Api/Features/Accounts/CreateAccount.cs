@@ -61,7 +61,7 @@ public static class CreateAccount
                     validationResult.ToString()));
             }
 
-            var userAccount = new UserAccount(Guid.NewGuid(), request.FullName);
+            var userAccount = UserAccount.Create(request.FullName);
             await _dbContext.UserAccounts.AddAsync(userAccount, cancellationToken);
             await _dbContext.SaveChangesAsync(cancellationToken);
             return new CreateAccountResponse(userAccount.Id, userAccount.FullName);
