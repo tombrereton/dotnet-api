@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4A648E15
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Api.UnitTests", "Web.Api.UnitTests\Web.Api.UnitTests.csproj", "{CBDC7AB2-99B8-4D88-BF1A-B416E2C004FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Api.UnitTests", "tests\Web.Api.UnitTests\Web.Api.UnitTests.csproj", "{CBDC7AB2-99B8-4D88-BF1A-B416E2C004FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Api.ArchitectureTests", "tests\Web.Api.ArchitectureTests\Web.Api.ArchitectureTests.csproj", "{8C310E57-8D96-4B6A-B13A-B3AACC62F220}"
 EndProject
