@@ -5,6 +5,13 @@ I have created a simple appointment scheduling api to demonstrate some preferred
 Users create an account with a default calendar and can add, remove, update or delete events to this calendar.
 Users can only have 1 account but can have multiple calendars.
 
+## Motivation
+I want to have a starter template for building Dotnet Apis. Things that are important:
+- Excellent developer experience
+- Zero config setup for running integration tests locally against a datastore
+- Established application architecture e.g. Vertical Slices or Clean Architecture
+- Contains examples for common problems e.g. Validation, Logging, Authentication, Data Access
+
 ## To Do
 - Move handler logic (use case) out of controller into a handler
 - Consider using Repositories instead of DbContext directly
