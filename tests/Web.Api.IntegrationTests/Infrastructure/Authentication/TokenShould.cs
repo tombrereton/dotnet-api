@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using FluentAssertions;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Infrastructure.IntegrationTests.Authentication;
+namespace Web.Api.IntegrationTests.Infrastructure.Authentication;
 
 public class TokenShould
 {
@@ -83,7 +83,7 @@ public class TokenShould
         // assert
         act.Should().Throw<SecurityTokenSignatureKeyNotFoundException>();
     }
-    
+
     [Fact]
     public void NotBeValidByAudience()
     {

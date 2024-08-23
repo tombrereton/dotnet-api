@@ -1,32 +1,31 @@
 using System.Net;
 using System.Net.Http.Json;
-using Domain.Accounts;
 using FluentAssertions;
-using Infrastructure.DbContext;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Web.Api.Features.Accounts;
+using Web.Api.Infrastructure.Database;
 using Web.Api.IntegrationTests.Helpers;
 
-namespace Web.Api.IntegrationTests.Accounts;
+namespace Web.Api.IntegrationTests.Features;
 
-public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Program>>
+public class CreateAccountShould : IClassFixture<AppointerWebApplicationFactory<Program>>
 {
     private readonly WebApplicationFactory<Program> _factory;
 
-    public AccountsShould(AppointerWebApplicationFactory<Program> factory)
+    public CreateAccountShould(AppointerWebApplicationFactory<Program> factory)
     {
         _factory = factory;
     }
 
     [Fact]
-    public async Task BeCreatedAndPersisted()
+    public async Task CreateAndPersistAccount()
     {
         // arrange
         var client = _factory.CreateClient();
         var url = "api/accounts";
         var fullName = "Full Name";
-        var request = new CreateAccount.Command { FullName = fullName };
+        var request = new CreateAccount.Command(FullName: fullName);
 
         // act
         var result = await client.PostAsJsonAsync(url, request);
@@ -42,34 +41,33 @@ public class AccountsShould : IClassFixture<AppointerWebApplicationFactory<Progr
         var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
         var newUserAccount = await dbContext.UserAccounts.FindAsync(response.Id);
         newUserAccount.Should().NotBeNull();
-        newUserAccount.FullName.Should().Be(fullName);
+        newUserAccount?.FullName.Should().Be(fullName);
     }
 
     [Fact]
-    public async Task GetExistingAccount()
+    public async Task CreateDefaultCalendar()
     {
         // arrange
-        var cts = new CancellationTokenSource();
-        cts.CancelAfter(TimeSpan.FromSeconds(30));
-        var cancellationToken = cts.Token;
-
-        using var scope = _factory.Services.CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
-        var userAccount = new UserAccount(Guid.NewGuid(), "Existing User");
-        await dbContext.UserAccounts.AddAsync(userAccount, cancellationToken);
-        await dbContext.SaveChangesAsync(cancellationToken);
-
         var client = _factory.CreateClient();
-        var url = "api/accounts/" + userAccount.Id;
+        var url = "api/accounts";
+        var fullName = "Default Calendar" + Guid.NewGuid().ToString();
+        var request = new CreateAccount.Command(FullName: fullName);
 
         // act
-        var result = await client.GetAsync(url, cancellationToken);
+        var result = await client.PostAsJsonAsync(url, request);
 
         // assert
         result.StatusCode.Should().Be(HttpStatusCode.OK);
-        var response = await result.Content.ReadFromJsonAsync<GetAccount.GetAccountResponse>(cancellationToken);
+        var response = await result.Content.ReadFromJsonAsync<CreateAccount.CreateAccountResponse>();
         response.Should().NotBeNull();
         response!.Id.Should().NotBeEmpty();
-        response.FullName.Should().Be(userAccount.FullName);
+
+        using var scope = _factory.Services.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
+        var newUserAccount = await dbContext.UserAccounts.FindAsync(response.Id);
+        newUserAccount.Should().NotBeNull();
+        newUserAccount?.FullName.Should().Be(fullName);
+
+
     }
 }

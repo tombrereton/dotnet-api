@@ -1,8 +1,8 @@
-using Domain.Accounts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Web.Api.Domain.Accounts;
 
-namespace Infrastructure.Configuration;
+namespace Web.Api.Infrastructure.Database;
 
 public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
 {
@@ -26,5 +26,12 @@ public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
         builder
             .Property(x => x.IsDeleted)
             .HasDefaultValue(false);
+
+        builder
+            .HasMany(x => x.Calendars)
+            .WithOne(x => x.UserAccount)
+            .HasForeignKey(x => x.UserAccountId)
+            .IsRequired();
+
     }
 }

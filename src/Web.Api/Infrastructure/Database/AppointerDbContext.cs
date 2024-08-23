@@ -1,10 +1,12 @@
-using Domain.Accounts;
 using Microsoft.EntityFrameworkCore;
+using Web.Api.Domain.Accounts;
+// ReSharper disable ConvertToPrimaryConstructor
 
-namespace Infrastructure.DbContext;
+namespace Web.Api.Infrastructure.Database;
 
-public class AppointerDbContext : Microsoft.EntityFrameworkCore.DbContext
+public class AppointerDbContext : DbContext
 {
+    public AppointerDbContext(){}
     public AppointerDbContext(DbContextOptions<AppointerDbContext> options) : base(options)
     {
     }
@@ -15,5 +17,5 @@ public class AppointerDbContext : Microsoft.EntityFrameworkCore.DbContext
         base.OnModelCreating(modelBuilder);
     }
 
-    public DbSet<UserAccount> UserAccounts { get; set; }
+    public virtual DbSet<UserAccount> UserAccounts { get; set; }
 }

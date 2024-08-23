@@ -1,10 +1,10 @@
-using Domain.Accounts;
 using FluentAssertions;
-using Infrastructure.DbContext;
-using Infrastructure.IntegrationTests.Helpers;
 using Microsoft.Extensions.DependencyInjection;
+using Web.Api.Domain.Accounts;
+using Web.Api.Infrastructure.Database;
+using Web.Api.IntegrationTests.Helpers;
 
-namespace Infrastructure.IntegrationTests.DbContext;
+namespace Web.Api.IntegrationTests.Infrastructure.Database;
 
 public class AppointerDbContextShould : MsSqlContainerStartup
 {
@@ -13,7 +13,7 @@ public class AppointerDbContextShould : MsSqlContainerStartup
     {
         // arrange
         var dbContext = Services.GetRequiredService<AppointerDbContext>();
-        var userAccount = new UserAccount(Guid.NewGuid(), "Full Name");
+        var userAccount = UserAccount.Create("John Doe");
 
         // act
         dbContext.UserAccounts.Add(userAccount);

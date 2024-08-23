@@ -1,10 +1,10 @@
-using Infrastructure.DbContext;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.MsSql;
+using Web.Api.Infrastructure.Database;
 
 namespace Web.Api.IntegrationTests.Helpers;
 
