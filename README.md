@@ -1,6 +1,6 @@
 # Introduction
 
-This is a simple appointment booking api to demonstrate a good working example of preferred patterns and architecture.
+This is a simple appointment booking api to demonstrate preferred patterns and architecture.
 
 Users create an account with a default calendar and can add, remove, update or delete events to this calendar.
 Users can only have 1 account but can have multiple calendars.
