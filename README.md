@@ -1,6 +1,6 @@
 # Introduction
 
-I have created a simple appointment scheduling api to demonstrate some preferred patterns and practices.
+This is a simple appointment booking api to demonstrate a good working example of preferred patterns and architecture.
 
 Users create an account with a default calendar and can add, remove, update or delete events to this calendar.
 Users can only have 1 account but can have multiple calendars.
@@ -12,18 +12,19 @@ I want to have a starter template for building Dotnet Apis. Things that are impo
 - Established application architecture e.g. Vertical Slices or Clean Architecture
 - Contains examples for common problems e.g. Validation, Logging, Authentication, Data Access
 
-## To Do
-- Move handler logic (use case) out of controller into a handler
-- Consider using Repositories instead of DbContext directly
-- REPR
-- Validation
-- Logging
-- Error Handling
-- CQRS
-- Clean Architecture
+## Features
+- [x] Zero config integration testing against the database
+- [ ] Zero config integration testing with events
+- [ ] Zero config integration test with authentication
+- [x] Architecture tests to enforce intended architecture i.e. Domain code cannot use code from Infrastructure
+- [x] Vertical Slice Architecture
+- [x] Validation
+- [ ] Use Repositorities to enforce write data access through Aggregate Roots
+- [ ] Use Dapper or EF Core Raw SQL for read data access
+- [ ] Logging
+- [ ] Error Handling
 
 ## Technologies
-
 - Testcontainers
 - xUnit
 - EF Core for writing to the datastore
@@ -32,8 +33,7 @@ I want to have a starter template for building Dotnet Apis. Things that are impo
 - Serilog
 
 ## Patterns
-
-- Clean Architecture
+- Vertical Slice
 - CQRS
 - REPR (Request Endpoint Response)
 - Repository Pattern
@@ -48,13 +48,6 @@ I want to have a starter template for building Dotnet Apis. Things that are impo
 On Mac enable Rosetta in the beta features as shown in the image below:
 
 ![Enable Rosetta](./imgs/dockerForMac.png)
-
-We will build a basic online appointment api. The api will allow users to create an account
-with an associated calendar. Then users can create, modify & view appointments in that
-calendar. We will ignore authentication in this exercise.
-
-- Using TDD, we will build out the functionality of the application
-- The functionality is defined by the requirements in the `Requirements` section
 
 ## Running the Tests
 
