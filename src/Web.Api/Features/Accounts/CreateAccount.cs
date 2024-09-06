@@ -12,10 +12,12 @@ public class CreateAccountEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("api/accounts", async (CreateAccount.Command request, ISender sender, CancellationToken cancellationToken) =>
+        app.MapPost("api/accounts", async (
+            CreateAccount.Command request,
+            ISender sender,
+            CancellationToken cancellationToken) =>
         {
             var result = await sender.Send(request, cancellationToken);
-
             if (result.IsFailure)
             {
                 return Results.BadRequest(result.Error);

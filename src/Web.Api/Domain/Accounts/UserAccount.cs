@@ -17,9 +17,8 @@ public sealed class UserAccount : Entity
     {
     }
 
-    public Guid Id { get; private set; }
     public string FullName { get; private set; }
-    public List<Calendar> Calendars { get; private set; } = new List<Calendar>();
+    public List<Calendar> Calendars { get; private set; } = [];
     public bool IsActive { get; private set; }
     public bool IsDeleted { get; private set; }
 
