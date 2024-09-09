@@ -1,6 +1,7 @@
 using Carter;
 using MediatR;
 using Web.Api.Common;
+using Web.Api.Domain.Abstractions;
 using Web.Api.Infrastructure.Database;
 
 namespace Web.Api.Features.Accounts;
@@ -32,16 +33,16 @@ public static class GetAccount
 
     public sealed class Handler : IRequestHandler<Query, Result<GetAccountResponse>>
     {
-        private readonly AppointerDbContext _dbContext;
+        private readonly IUserAccountRepository _repository;
 
-        public Handler(AppointerDbContext dbContext)
+        public Handler(IUserAccountRepository repository)
         {
-            _dbContext = dbContext;
+            _repository = repository;
         }
 
         public async Task<Result<GetAccountResponse>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var account = await _dbContext.UserAccounts.FindAsync(request.Id, cancellationToken);
+            var account = await _repository.GetAsync(request.Id, cancellationToken);
 
             if (account is null)
             {

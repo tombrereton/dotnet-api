@@ -3,6 +3,7 @@ using FluentValidation;
 using Mapster;
 using MediatR;
 using Web.Api.Common;
+using Web.Api.Domain.Abstractions;
 using Web.Api.Domain.Accounts;
 using Web.Api.Infrastructure.Database;
 
@@ -44,12 +45,12 @@ public static class CreateAccount
 
     public sealed class Handler : IRequestHandler<Command, Result<CreateAccountResponse>>
     {
-        private readonly AppointerDbContext _dbContext;
+        private readonly IUserAccountRepository _repository;
         private readonly IValidator<Command> _validator;
 
-        public Handler(AppointerDbContext dbContext, IValidator<Command> validator)
+        public Handler(IUserAccountRepository repository, IValidator<Command> validator)
         {
-            _dbContext = dbContext;
+            _repository = repository;
             _validator = validator;
         }
 
@@ -64,8 +65,8 @@ public static class CreateAccount
             }
 
             var userAccount = UserAccount.Create(request.FullName);
-            await _dbContext.UserAccounts.AddAsync(userAccount, cancellationToken);
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await _repository.AddAsync(userAccount, cancellationToken);
+            await _repository.SaveChangesAsync(cancellationToken);
             return new CreateAccountResponse(userAccount.Id, userAccount.FullName);
         }
     }

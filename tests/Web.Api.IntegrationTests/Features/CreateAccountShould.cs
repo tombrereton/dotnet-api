@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Http.Json;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Web.Api.Features.Accounts;
 using Web.Api.Infrastructure.Database;
@@ -50,7 +51,7 @@ public class CreateAccountShould : IClassFixture<AppointerWebApplicationFactory<
         // arrange
         var client = _factory.CreateClient();
         var url = "api/accounts";
-        var fullName = "Default Calendar" + Guid.NewGuid().ToString();
+        var fullName = "Default Calendar" + Guid.NewGuid();
         var request = new CreateAccount.Command(FullName: fullName);
 
         // act
@@ -64,10 +65,16 @@ public class CreateAccountShould : IClassFixture<AppointerWebApplicationFactory<
 
         using var scope = _factory.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
-        var newUserAccount = await dbContext.UserAccounts.FindAsync(response.Id);
+        var newUserAccount = await dbContext
+            .UserAccounts
+            .Include(db => db.Calendars)
+            .FirstAsync(x => x.Id == response.Id);
+
         newUserAccount.Should().NotBeNull();
         newUserAccount?.FullName.Should().Be(fullName);
 
-
+        var defaultCalendar = newUserAccount?.Calendars.FirstOrDefault();
+        defaultCalendar.Should().NotBeNull();
+        defaultCalendar?.Name.Should().Be("Default");
     }
 }

@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Web.Api.Domain.Abstractions;
 using Web.Api.Infrastructure.Database;
+using Web.Api.Infrastructure.Repositories;
 
 namespace Web.Api.Infrastructure;
 
@@ -9,6 +12,8 @@ public static class DependencyInjection
     {
         services.AddDbContext<AppointerDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("Database")));
+
+        services.AddTransient<IUserAccountRepository, UserAccountRepository>();
 
         return services;
     }

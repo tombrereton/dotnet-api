@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Moq;
+using Web.Api.Domain.Abstractions;
 using Web.Api.Features.Accounts;
 using Web.Api.Infrastructure.Database;
 
@@ -12,7 +13,7 @@ namespace Web.Api.UnitTests.Features
         {
             // arrange
             var validator = new CreateAccount.Validator();
-            var mockDbContext = new Mock<AppointerDbContext>();
+            var mockDbContext = new Mock<IUserAccountRepository>();
             var handler = new CreateAccount.Handler(mockDbContext.Object, validator);
             var command = new CreateAccount.Command("");
 
