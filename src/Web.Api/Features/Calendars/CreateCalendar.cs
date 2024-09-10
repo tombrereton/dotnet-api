@@ -10,7 +10,7 @@ public static class CreateCalendar
 {
     public class Handler : INotificationHandler<UserAccountCreatedDomainEvent>
     {
-        private IUserAccountRepository _repository;
+        private readonly IUserAccountRepository _repository;
 
         public Handler(IUserAccountRepository repository)
         {

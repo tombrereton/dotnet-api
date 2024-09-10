@@ -8,7 +8,7 @@ namespace Web.Api.IntegrationTests.Infrastructure.Publishing;
 
 public class AppointerDbContextShould : MsSqlContainerStartup
 {
-    // [Fact]
+    [Fact]
     public async Task PersistUserAccount()
     {
         // arrange
