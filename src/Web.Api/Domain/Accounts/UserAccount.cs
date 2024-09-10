@@ -1,3 +1,4 @@
+using CommunityToolkit.Diagnostics;
 using Web.Api.Common;
 using Web.Api.Domain.Calendars;
 
@@ -29,5 +30,13 @@ public sealed class UserAccount : Entity
         userAccount.RaiseDomainEvent(new UserAccountCreatedDomainEvent(userAccount.Id));
 
         return userAccount;
+    }
+
+    public void AddCalendar(Calendar calendar)
+    {
+        Guard.IsNotNull(calendar, nameof(calendar));
+        Calendars.Add(calendar);
+
+        RaiseDomainEvent(new DefaultCalendarAddedDomainEvent(this.Id, calendar.Id));
     }
 }

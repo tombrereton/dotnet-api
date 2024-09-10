@@ -19,9 +19,9 @@ public sealed class Calendar : Entity
     public Guid UserAccountId { get; private set; }
     public UserAccount UserAccount { get; private set; } = null!;
 
-    public static Calendar Create(string fullName)
+    public static Calendar Create(string calendarName)
     {
-        var calendar = new Calendar(Guid.NewGuid(), fullName);
+        var calendar = new Calendar(Guid.NewGuid(), calendarName);
 
         // userAccount.RaiseDomainEvent(new UserAccountCreatedDomainEvent(userAccount.Id));
 
