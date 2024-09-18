@@ -1,3 +1,5 @@
+> Under Development. View Features section for completed work
+
 # Introduction
 
 This is a simple appointment booking api to demonstrate preferred patterns and architecture.
@@ -18,7 +20,7 @@ I want to have a starter template for building Dotnet Apis. Things that are impo
 - [ ] Zero config integration test with authentication
 - [x] Architecture tests to enforce intended architecture i.e. Domain code cannot use code from Infrastructure
 - [x] Vertical Slice Architecture
-- [x] Validation
+- [ ] Validation
 - [ ] Use Repositorities to enforce write data access through Aggregate Roots
 - [ ] Use Dapper or EF Core Raw SQL for read data access
 - [ ] Logging
