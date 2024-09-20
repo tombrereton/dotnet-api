@@ -1,4 +1,4 @@
-> Under Development. View Features section for completed work
+> Under Development. The Features section lists completed work
 
 # Introduction
 
