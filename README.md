@@ -41,6 +41,9 @@ I want to have a starter template for building Dotnet Apis. Things that are impo
 - Repository Pattern
 - Feature Folders
 
+## Architectural Decision Records
+- Have a thin endpoint/controller and move the logic into a handler/service class so it's (1) unit testable and (2) decoupled from the endpoint framework so it can moved around and called from elsewhere
+
 ## Prerequisites
 
 - .NET 8 SDK
