@@ -42,7 +42,8 @@ I want to have a starter template for building Dotnet Apis. Things that are impo
 - Feature Folders
 
 ## Architectural Decision Records
-- Have a thin endpoint/controller and move the logic into a handler/service class so it's (1) unit testable and (2) decoupled from the endpoint framework so it can moved around and called from elsewhere
+- Have a thin endpoint/controller and move the logic into a handler/service class so it's (1) unit testable and (2) decoupled from the endpoint framework to ease with refactoring e.g. moving the handler to a `Core` or `Application` project.
+- (Exploring) Use Result objects for control flow instead of exceptions. In common code paths like validation or business rules use Result.Failure() or Result.Success(); use Exceptions for situations like failed connection, out of memory, access array incorrectly
 
 ## Prerequisites
 
