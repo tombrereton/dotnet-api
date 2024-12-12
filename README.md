@@ -42,9 +42,9 @@ I want to have a starter template for building Dotnet Apis. Things that are impo
 - Feature Folders
 
 ## Architectural Decision Records
-- Have a thin endpoint/controller and move the logic into a handler/service class so it's (1) unit testable and (2) decoupled from the endpoint framework to ease with refactoring e.g. moving the handler to a `Core` or `Application` project.
+- Have a thin endpoint/controller and move the logic into a handler/service class so it's (1) unit testable and (2) decoupled from the endpoint framework to ease with refactoring e.g. moving the handlers to a `Core` or `Application` project and changing the executable project to function app
 - (Exploring) Use [Result](https://www.milanjovanovic.tech/blog/functional-error-handling-in-dotnet-with-the-result-pattern) objects for control flow instead of exceptions. In common code paths like validation or business rules use Result.Failure() or Result.Success(); use Exceptions for situations like failed connection, out of memory, access array incorrectly
-- Perform all validation you can in with Input Validation, i.e. the FluentValidator. For validation on business rules i.e. if x is 3, then y can only be 5, or no duplicate calendar names, perform this in the Domain Entity. The Entity is an Aggregate, so it has all the information loaded in memory to perform these checks without reaching into the database again.
+- Perform all validation you can in with Input Validation, i.e. the FluentValidator. For validation on business rules i.e. if x is 3, then y can only be 5, or no duplicate calendar names, perform this in the Domain Entity. In other words, if you rely on data from the database to perform the validation it's a business rule and should be validated within the aggregate. Being an Aggregate means all its information is loaded in memory to perform these checks without reaching into the database again.
 
 ## Prerequisites
 
