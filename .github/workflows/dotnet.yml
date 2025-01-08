@@ -36,7 +36,7 @@ jobs:
     
     - name: 🔧 Try Get Cache
       id: image-cache
-      uses: actions/cache@v1
+      uses: actions/cache@v4
       with:
         path: ~/image-cache
         key: image-cache-${{ runner.os }}
