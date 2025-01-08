@@ -4,21 +4,16 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Teeitup.Web.Api;
 using Teeitup.Web.Api.Features.Accounts;
 using Teeitup.Web.Api.Infrastructure.Database;
-using Web.Api.IntegrationTests.Helpers;
+using Teeitup.Web.Api.IntegrationTests.Helpers;
 
-namespace Web.Api.IntegrationTests.Features;
+namespace Teeitup.Web.Api.IntegrationTests.Features;
 
-public class CreateAccountShould : IClassFixture<AppointerWebApplicationFactory<Program>>
+public class CreateAccountShould(AppointerWebApplicationFactory<Program> factory)
+    : IClassFixture<AppointerWebApplicationFactory<Program>>
 {
-    private readonly WebApplicationFactory<Program> _factory;
-
-    public CreateAccountShould(AppointerWebApplicationFactory<Program> factory)
-    {
-        _factory = factory;
-    }
+    private readonly WebApplicationFactory<Program> _factory = factory;
 
     [Fact]
     public async Task CreateAndPersistAccount()

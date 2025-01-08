@@ -2,9 +2,9 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Teeitup.Web.Api.Domain.Accounts;
 using Teeitup.Web.Api.Infrastructure.Database;
-using Web.Api.IntegrationTests.Helpers;
+using Teeitup.Web.Api.IntegrationTests.Helpers;
 
-namespace Web.Api.IntegrationTests.Infrastructure.Publishing;
+namespace Teeitup.Web.Api.IntegrationTests.Infrastructure.Publishing;
 
 public class AppointerDbContextShould : MsSqlContainerStartup
 {

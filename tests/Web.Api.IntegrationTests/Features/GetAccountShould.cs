@@ -3,13 +3,12 @@ using System.Net.Http.Json;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using Teeitup.Web.Api;
 using Teeitup.Web.Api.Domain.Accounts;
 using Teeitup.Web.Api.Features.Accounts;
 using Teeitup.Web.Api.Infrastructure.Database;
-using Web.Api.IntegrationTests.Helpers;
+using Teeitup.Web.Api.IntegrationTests.Helpers;
 
-namespace Web.Api.IntegrationTests.Features;
+namespace Teeitup.Web.Api.IntegrationTests.Features;
 
 public class GetAccountShould : IClassFixture<AppointerWebApplicationFactory<Program>>
 {

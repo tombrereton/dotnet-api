@@ -3,7 +3,7 @@ using Moq;
 using Teeitup.Web.Api.Domain.Abstractions;
 using Teeitup.Web.Api.Features.Accounts;
 
-namespace Web.Api.UnitTests.Features
+namespace Teeitup.Web.Api.UnitTests.Features
 {
     public class CreateAccountShould
     {

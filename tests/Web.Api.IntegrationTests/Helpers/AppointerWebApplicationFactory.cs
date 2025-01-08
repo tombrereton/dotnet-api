@@ -7,7 +7,7 @@ using Teeitup.Web.Api.Infrastructure.Database;
 using Teeitup.Web.Api.Infrastructure.Extensions;
 using Testcontainers.MsSql;
 
-namespace Web.Api.IntegrationTests.Helpers;
+namespace Teeitup.Web.Api.IntegrationTests.Helpers;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public class AppointerWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLifetime

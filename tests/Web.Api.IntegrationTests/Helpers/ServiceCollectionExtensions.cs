@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Web.Api.IntegrationTests.Helpers;
+namespace Teeitup.Web.Api.IntegrationTests.Helpers;
 
 public static class ServiceCollectionExtensions
 {

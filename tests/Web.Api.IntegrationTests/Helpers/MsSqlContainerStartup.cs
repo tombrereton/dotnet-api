@@ -5,7 +5,7 @@ using Teeitup.Web.Api.Infrastructure;
 using Teeitup.Web.Api.Infrastructure.Database;
 using Testcontainers.MsSql;
 
-namespace Web.Api.IntegrationTests.Helpers;
+namespace Teeitup.Web.Api.IntegrationTests.Helpers;
 
 public class MsSqlContainerStartup : IAsyncLifetime
 {

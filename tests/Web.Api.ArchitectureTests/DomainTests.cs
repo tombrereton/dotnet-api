@@ -1,9 +1,8 @@
 using System.Reflection;
 using FluentAssertions;
 using NetArchTest.Rules;
-using Teeitup.Web.Api;
 
-namespace Web.Api.ArchitectureTests
+namespace Teeitup.Web.Api.ArchitectureTests
 {
     public class DomainTests
     {
