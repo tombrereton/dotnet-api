@@ -11,10 +11,6 @@ public sealed class Calendar : Entity
         Name = name;
     }
 
-    private Calendar()
-    {
-    }
-
     public string Name { get; private set; }
     public Guid UserAccountId { get; private set; }
     public UserAccount UserAccount { get; private set; } = null!;

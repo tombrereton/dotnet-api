@@ -14,10 +14,6 @@ public sealed class UserAccount : Entity
         IsDeleted = isDeleted;
     }
 
-    private UserAccount()
-    {
-    }
-
     public string FullName { get; private set; }
     public List<Calendar> Calendars { get; private set; } = [];
     public bool IsActive { get; private set; }

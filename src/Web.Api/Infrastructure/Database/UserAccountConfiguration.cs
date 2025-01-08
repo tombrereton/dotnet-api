@@ -17,6 +17,7 @@ public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
 
         builder
             .Property(x => x.FullName)
+            .HasMaxLength(256)
             .IsRequired();
 
         builder
