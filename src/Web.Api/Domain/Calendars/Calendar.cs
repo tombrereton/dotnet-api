@@ -1,7 +1,8 @@
-using Web.Api.Common;
-using Web.Api.Domain.Accounts;
+using Appointer.Web.Api.Common;
+using Appointer.Web.Api.Domain.Accounts;
+using Appointer.Web.Api.Infrastructure.Database;
 
-namespace Web.Api.Domain.Calendars;
+namespace Appointer.Web.Api.Domain.Calendars;
 
 public sealed class Calendar : Entity
 {
@@ -14,6 +15,7 @@ public sealed class Calendar : Entity
     private Calendar()
     {
     }
+    public Dummy test { get; set; }
 
     public string Name { get; private set; }
     public Guid UserAccountId { get; private set; }

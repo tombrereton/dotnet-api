@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+namespace Appointer.Web.Api.Infrastructure.Extensions;
+
 public static class ServiceCollectionExtensions
 {
     public static void EnsureDbCreated<T>(this IServiceCollection services) where T : DbContext

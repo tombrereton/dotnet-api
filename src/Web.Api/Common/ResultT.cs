@@ -1,4 +1,4 @@
-﻿namespace Web.Api.Common;
+﻿namespace Appointer.Web.Api.Common;
 
 public class Result<TValue> : Result
 {

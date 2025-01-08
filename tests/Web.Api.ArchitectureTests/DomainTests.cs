@@ -1,4 +1,5 @@
 using System.Reflection;
+using Appointer.Web.Api;
 using FluentAssertions;
 using NetArchTest.Rules;
 
@@ -13,9 +14,9 @@ namespace Web.Api.ArchitectureTests
         {
             var result = Types.InAssembly(_assembly)
                 .That()
-                .ResideInNamespace("Web.Api.Domain")
+                .ResideInNamespace("Appointer.Web.Api.Domain")
                 .Should()
-                .NotHaveDependencyOn("Web.Api.Infrastructure")
+                .NotHaveDependencyOn("Appointer.Web.Api.Infrastructure")
                 .GetResult()
                 .IsSuccessful;
 

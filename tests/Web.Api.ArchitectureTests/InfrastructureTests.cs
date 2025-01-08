@@ -1,4 +1,5 @@
 using System.Reflection;
+using Appointer.Web.Api;
 using FluentAssertions;
 using NetArchTest.Rules;
 

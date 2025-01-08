@@ -1,9 +1,9 @@
+using Appointer.Web.Api.Features;
+using Appointer.Web.Api.Infrastructure;
+using Appointer.Web.Api.Infrastructure.Database;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.MsSql;
-using Web.Api.Features;
-using Web.Api.Infrastructure;
-using Web.Api.Infrastructure.Database;
 
 namespace Web.Api.IntegrationTests.Helpers;
 

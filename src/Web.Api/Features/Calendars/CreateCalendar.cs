@@ -1,10 +1,10 @@
+using Appointer.Web.Api.Domain.Abstractions;
+using Appointer.Web.Api.Domain.Accounts;
+using Appointer.Web.Api.Domain.Calendars;
 using CommunityToolkit.Diagnostics;
 using MediatR;
-using Web.Api.Domain.Abstractions;
-using Web.Api.Domain.Accounts;
-using Web.Api.Domain.Calendars;
 
-namespace Web.Api.Features.Calendars;
+namespace Appointer.Web.Api.Features.Calendars;
 
 public static class CreateCalendar
 {

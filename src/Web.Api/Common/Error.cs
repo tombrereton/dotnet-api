@@ -1,4 +1,4 @@
-﻿namespace Web.Api.Common;
+﻿namespace Appointer.Web.Api.Common;
 
 public record Error(string Code, string Message)
 {

@@ -1,5 +1,5 @@
-using Web.Api.Common;
+using Appointer.Web.Api.Common;
 
-namespace Web.Api.Domain.Accounts;
+namespace Appointer.Web.Api.Domain.Accounts;
 
 public record DefaultCalendarAddedDomainEvent(Guid UserAccountId, Guid CalendarId) : IDomainEvent;

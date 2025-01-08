@@ -1,10 +1,9 @@
+using Appointer.Web.Api.Common;
+using Appointer.Web.Api.Domain.Abstractions;
 using Carter;
 using MediatR;
-using Web.Api.Common;
-using Web.Api.Domain.Abstractions;
-using Web.Api.Infrastructure.Database;
 
-namespace Web.Api.Features.Accounts;
+namespace Appointer.Web.Api.Features.Accounts;
 
 public class GetAccountEndpoint : ICarterModule
 {

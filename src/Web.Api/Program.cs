@@ -1,7 +1,9 @@
+using Appointer.ServiceDefaults;
+using Appointer.Web.Api.Features;
+using Appointer.Web.Api.Infrastructure;
+using Appointer.Web.Api.Infrastructure.Database;
+using Appointer.Web.Api.Infrastructure.Extensions;
 using Carter;
-using Web.Api.Features;
-using Web.Api.Infrastructure;
-using Web.Api.Infrastructure.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +15,8 @@ builder.Services.AddFeatures();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
-
 app.MapDefaultEndpoints();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -26,7 +28,7 @@ app.MapCarter();
 app.UseHttpsRedirection();
 app.Run();
 
-namespace Web.Api
+namespace Appointer.Web.Api
 {
     public partial class Program;
 }

@@ -1,9 +1,9 @@
+using Appointer.Web.Api.Common;
+using Appointer.Web.Api.Domain.Accounts;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Web.Api.Common;
-using Web.Api.Domain.Accounts;
 
-namespace Web.Api.Infrastructure.Database;
+namespace Appointer.Web.Api.Infrastructure.Database;
 
 public class AppointerDbContext : DbContext
 {

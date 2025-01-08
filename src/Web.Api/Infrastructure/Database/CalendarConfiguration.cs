@@ -1,9 +1,8 @@
+using Appointer.Web.Api.Domain.Calendars;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Web.Api.Domain.Accounts;
-using Web.Api.Domain.Calendars;
 
-namespace Web.Api.Infrastructure.Database;
+namespace Appointer.Web.Api.Infrastructure.Database;
 
 public class CalendarConfiguration : IEntityTypeConfiguration<Calendar>
 {

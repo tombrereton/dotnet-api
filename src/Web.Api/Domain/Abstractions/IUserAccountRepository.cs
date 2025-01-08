@@ -1,6 +1,6 @@
-using Web.Api.Domain.Accounts;
+using Appointer.Web.Api.Domain.Accounts;
 
-namespace Web.Api.Domain.Abstractions;
+namespace Appointer.Web.Api.Domain.Abstractions;
 
 public interface IUserAccountRepository
 {

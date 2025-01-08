@@ -1,10 +1,11 @@
+using Appointer.Web.Api.Infrastructure.Database;
+using Appointer.Web.Api.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.MsSql;
-using Web.Api.Infrastructure.Database;
 
 namespace Web.Api.IntegrationTests.Helpers;
 

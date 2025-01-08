@@ -1,8 +1,8 @@
-using Web.Api.Domain.Abstractions;
-using Web.Api.Domain.Accounts;
-using Web.Api.Infrastructure.Database;
+using Appointer.Web.Api.Domain.Abstractions;
+using Appointer.Web.Api.Domain.Accounts;
+using Appointer.Web.Api.Infrastructure.Database;
 
-namespace Web.Api.Infrastructure.Repositories;
+namespace Appointer.Web.Api.Infrastructure.Repositories;
 
 internal sealed class UserAccountRepository : Repository<UserAccount>, IUserAccountRepository
 {

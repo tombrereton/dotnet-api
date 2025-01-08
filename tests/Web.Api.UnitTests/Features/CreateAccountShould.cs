@@ -1,8 +1,7 @@
+using Appointer.Web.Api.Domain.Abstractions;
+using Appointer.Web.Api.Features.Accounts;
 using FluentAssertions;
 using Moq;
-using Web.Api.Domain.Abstractions;
-using Web.Api.Features.Accounts;
-using Web.Api.Infrastructure.Database;
 
 namespace Web.Api.UnitTests.Features
 {

@@ -1,11 +1,11 @@
+using Appointer.Web.Api.Common;
+using Appointer.Web.Api.Domain.Abstractions;
+using Appointer.Web.Api.Domain.Accounts;
 using Carter;
 using FluentValidation;
 using MediatR;
-using Web.Api.Common;
-using Web.Api.Domain.Abstractions;
-using Web.Api.Domain.Accounts;
 
-namespace Web.Api.Features.Accounts;
+namespace Appointer.Web.Api.Features.Accounts;
 
 public class CreateAccountEndpoint : ICarterModule
 {

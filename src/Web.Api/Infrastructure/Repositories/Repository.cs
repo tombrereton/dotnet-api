@@ -1,8 +1,8 @@
+using Appointer.Web.Api.Common;
+using Appointer.Web.Api.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
-using Web.Api.Common;
-using Web.Api.Infrastructure.Database;
 
-namespace Web.Api.Infrastructure.Repositories;
+namespace Appointer.Web.Api.Infrastructure.Repositories;
 
 internal abstract class Repository<T> where T : Entity
 {

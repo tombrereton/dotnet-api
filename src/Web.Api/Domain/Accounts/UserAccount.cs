@@ -1,8 +1,8 @@
+using Appointer.Web.Api.Common;
+using Appointer.Web.Api.Domain.Calendars;
 using CommunityToolkit.Diagnostics;
-using Web.Api.Common;
-using Web.Api.Domain.Calendars;
 
-namespace Web.Api.Domain.Accounts;
+namespace Appointer.Web.Api.Domain.Accounts;
 
 public sealed class UserAccount : Entity
 {
