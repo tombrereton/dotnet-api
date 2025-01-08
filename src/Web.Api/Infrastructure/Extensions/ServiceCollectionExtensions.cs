@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Appointer.Web.Api.Infrastructure.Extensions;
+namespace Teeitup.Web.Api.Infrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {

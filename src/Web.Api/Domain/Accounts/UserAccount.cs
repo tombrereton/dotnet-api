@@ -1,8 +1,8 @@
-using Appointer.Web.Api.Common;
-using Appointer.Web.Api.Domain.Calendars;
 using CommunityToolkit.Diagnostics;
+using Teeitup.Web.Api.Common;
+using Teeitup.Web.Api.Domain.Calendars;
 
-namespace Appointer.Web.Api.Domain.Accounts;
+namespace Teeitup.Web.Api.Domain.Accounts;
 
 public sealed class UserAccount : Entity
 {

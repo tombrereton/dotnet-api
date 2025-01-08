@@ -1,7 +1,7 @@
 using Carter;
 using FluentValidation;
 
-namespace Appointer.Web.Api.Features;
+namespace Teeitup.Web.Api.Features;
 
 public static class DependencyInjection
 {

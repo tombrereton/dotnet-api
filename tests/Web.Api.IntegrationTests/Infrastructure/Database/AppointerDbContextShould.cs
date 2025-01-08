@@ -1,7 +1,7 @@
-using Appointer.Web.Api.Domain.Accounts;
-using Appointer.Web.Api.Infrastructure.Database;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using Teeitup.Web.Api.Domain.Accounts;
+using Teeitup.Web.Api.Infrastructure.Database;
 using Web.Api.IntegrationTests.Helpers;
 
 namespace Web.Api.IntegrationTests.Infrastructure.Database;

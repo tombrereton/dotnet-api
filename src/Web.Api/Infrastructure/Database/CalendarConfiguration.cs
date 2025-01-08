@@ -1,8 +1,8 @@
-using Appointer.Web.Api.Domain.Calendars;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Teeitup.Web.Api.Domain.Calendars;
 
-namespace Appointer.Web.Api.Infrastructure.Database;
+namespace Teeitup.Web.Api.Infrastructure.Database;
 
 public class CalendarConfiguration : IEntityTypeConfiguration<Calendar>
 {

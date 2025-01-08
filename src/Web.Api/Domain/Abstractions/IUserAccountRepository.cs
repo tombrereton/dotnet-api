@@ -1,6 +1,6 @@
-using Appointer.Web.Api.Domain.Accounts;
+using Teeitup.Web.Api.Domain.Accounts;
 
-namespace Appointer.Web.Api.Domain.Abstractions;
+namespace Teeitup.Web.Api.Domain.Abstractions;
 
 public interface IUserAccountRepository
 {

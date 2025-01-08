@@ -1,9 +1,9 @@
-﻿using Appointer.Web.Api.Domain.Abstractions;
-using Appointer.Web.Api.Infrastructure.Database;
-using Appointer.Web.Api.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Teeitup.Web.Api.Domain.Abstractions;
+using Teeitup.Web.Api.Infrastructure.Database;
+using Teeitup.Web.Api.Infrastructure.Repositories;
 
-namespace Appointer.Web.Api.Infrastructure;
+namespace Teeitup.Web.Api.Infrastructure;
 
 public static class DependencyInjection
 {

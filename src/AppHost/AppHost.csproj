@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <IsAspireHost>true</IsAspireHost>
     <UserSecretsId>d678c8b3-a310-4436-87ce-34a92ee234d2</UserSecretsId>
-    <RootNamespace>Appointer.AppHost</RootNamespace>
+    <RootNamespace>Teeitup.AppHost</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

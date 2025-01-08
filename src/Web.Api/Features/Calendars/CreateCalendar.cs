@@ -1,10 +1,10 @@
-using Appointer.Web.Api.Domain.Abstractions;
-using Appointer.Web.Api.Domain.Accounts;
-using Appointer.Web.Api.Domain.Calendars;
 using CommunityToolkit.Diagnostics;
 using MediatR;
+using Teeitup.Web.Api.Domain.Abstractions;
+using Teeitup.Web.Api.Domain.Accounts;
+using Teeitup.Web.Api.Domain.Calendars;
 
-namespace Appointer.Web.Api.Features.Calendars;
+namespace Teeitup.Web.Api.Features.Calendars;
 
 public static class CreateCalendar
 {

@@ -1,5 +1,5 @@
-using Appointer.Web.Api.Common;
+using Teeitup.Web.Api.Common;
 
-namespace Appointer.Web.Api.Domain.Accounts;
+namespace Teeitup.Web.Api.Domain.Accounts;
 
 public sealed record UserAccountCreatedDomainEvent(Guid UserAccountId) : IDomainEvent;

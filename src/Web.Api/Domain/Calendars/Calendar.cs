@@ -1,8 +1,7 @@
-using Appointer.Web.Api.Common;
-using Appointer.Web.Api.Domain.Accounts;
-using Appointer.Web.Api.Infrastructure.Database;
+using Teeitup.Web.Api.Common;
+using Teeitup.Web.Api.Domain.Accounts;
 
-namespace Appointer.Web.Api.Domain.Calendars;
+namespace Teeitup.Web.Api.Domain.Calendars;
 
 public sealed class Calendar : Entity
 {

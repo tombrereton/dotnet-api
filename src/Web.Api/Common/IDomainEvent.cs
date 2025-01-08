@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Appointer.Web.Api.Common;
+namespace Teeitup.Web.Api.Common;
 
 public interface IDomainEvent : INotification
 {

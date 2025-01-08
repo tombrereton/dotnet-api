@@ -1,8 +1,8 @@
-using Appointer.Web.Api.Common;
-using Appointer.Web.Api.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
+using Teeitup.Web.Api.Common;
+using Teeitup.Web.Api.Infrastructure.Database;
 
-namespace Appointer.Web.Api.Infrastructure.Repositories;
+namespace Teeitup.Web.Api.Infrastructure.Repositories;
 
 internal abstract class Repository<T> where T : Entity
 {

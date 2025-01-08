@@ -1,10 +1,10 @@
-using Appointer.Web.Api.Infrastructure.Database;
-using Appointer.Web.Api.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Teeitup.Web.Api.Infrastructure.Database;
+using Teeitup.Web.Api.Infrastructure.Extensions;
 using Testcontainers.MsSql;
 
 namespace Web.Api.IntegrationTests.Helpers;

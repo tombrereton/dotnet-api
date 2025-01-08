@@ -1,9 +1,9 @@
-using Appointer.Web.Api.Common;
-using Appointer.Web.Api.Domain.Accounts;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Teeitup.Web.Api.Common;
+using Teeitup.Web.Api.Domain.Accounts;
 
-namespace Appointer.Web.Api.Infrastructure.Database;
+namespace Teeitup.Web.Api.Infrastructure.Database;
 
 public class AppointerDbContext : DbContext
 {

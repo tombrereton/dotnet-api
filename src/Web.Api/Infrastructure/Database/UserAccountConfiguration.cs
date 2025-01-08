@@ -1,8 +1,8 @@
-using Appointer.Web.Api.Domain.Accounts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Teeitup.Web.Api.Domain.Accounts;
 
-namespace Appointer.Web.Api.Infrastructure.Database;
+namespace Teeitup.Web.Api.Infrastructure.Database;
 
 public class UserAccountConfiguration : IEntityTypeConfiguration<UserAccount>
 {

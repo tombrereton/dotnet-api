@@ -1,8 +1,8 @@
-using Appointer.Web.Api.Domain.Abstractions;
-using Appointer.Web.Api.Domain.Accounts;
-using Appointer.Web.Api.Infrastructure.Database;
+using Teeitup.Web.Api.Domain.Abstractions;
+using Teeitup.Web.Api.Domain.Accounts;
+using Teeitup.Web.Api.Infrastructure.Database;
 
-namespace Appointer.Web.Api.Infrastructure.Repositories;
+namespace Teeitup.Web.Api.Infrastructure.Repositories;
 
 internal sealed class UserAccountRepository : Repository<UserAccount>, IUserAccountRepository
 {

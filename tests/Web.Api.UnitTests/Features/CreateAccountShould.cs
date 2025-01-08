@@ -1,7 +1,7 @@
-using Appointer.Web.Api.Domain.Abstractions;
-using Appointer.Web.Api.Features.Accounts;
 using FluentAssertions;
 using Moq;
+using Teeitup.Web.Api.Domain.Abstractions;
+using Teeitup.Web.Api.Features.Accounts;
 
 namespace Web.Api.UnitTests.Features
 {

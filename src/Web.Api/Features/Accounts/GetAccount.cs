@@ -1,9 +1,9 @@
-using Appointer.Web.Api.Common;
-using Appointer.Web.Api.Domain.Abstractions;
 using Carter;
 using MediatR;
+using Teeitup.Web.Api.Common;
+using Teeitup.Web.Api.Domain.Abstractions;
 
-namespace Appointer.Web.Api.Features.Accounts;
+namespace Teeitup.Web.Api.Features.Accounts;
 
 public class GetAccountEndpoint : ICarterModule
 {

@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsAspireSharedProject>true</IsAspireSharedProject>
-    <RootNamespace>Appointer.ServiceDefaults</RootNamespace>
+    <RootNamespace>Teeitup.ServiceDefaults</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

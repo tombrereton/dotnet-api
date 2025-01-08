@@ -1,4 +1,4 @@
-﻿namespace Appointer.Web.Api.Common;
+﻿namespace Teeitup.Web.Api.Common;
 
 public record Error(string Code, string Message)
 {

@@ -1,11 +1,11 @@
-using Appointer.Web.Api.Common;
-using Appointer.Web.Api.Domain.Abstractions;
-using Appointer.Web.Api.Domain.Accounts;
 using Carter;
 using FluentValidation;
 using MediatR;
+using Teeitup.Web.Api.Common;
+using Teeitup.Web.Api.Domain.Abstractions;
+using Teeitup.Web.Api.Domain.Accounts;
 
-namespace Appointer.Web.Api.Features.Accounts;
+namespace Teeitup.Web.Api.Features.Accounts;
 
 public class CreateAccountEndpoint : ICarterModule
 {

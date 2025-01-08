@@ -1,12 +1,12 @@
 using System.Net;
 using System.Net.Http.Json;
-using Appointer.Web.Api;
-using Appointer.Web.Api.Features.Accounts;
-using Appointer.Web.Api.Infrastructure.Database;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Teeitup.Web.Api;
+using Teeitup.Web.Api.Features.Accounts;
+using Teeitup.Web.Api.Infrastructure.Database;
 using Web.Api.IntegrationTests.Helpers;
 
 namespace Web.Api.IntegrationTests.Features;

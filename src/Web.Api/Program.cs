@@ -1,9 +1,9 @@
-using Appointer.ServiceDefaults;
-using Appointer.Web.Api.Features;
-using Appointer.Web.Api.Infrastructure;
-using Appointer.Web.Api.Infrastructure.Database;
-using Appointer.Web.Api.Infrastructure.Extensions;
 using Carter;
+using Teeitup.ServiceDefaults;
+using Teeitup.Web.Api.Features;
+using Teeitup.Web.Api.Infrastructure;
+using Teeitup.Web.Api.Infrastructure.Database;
+using Teeitup.Web.Api.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +28,7 @@ app.MapCarter();
 app.UseHttpsRedirection();
 app.Run();
 
-namespace Appointer.Web.Api
+namespace Teeitup.Web.Api
 {
     public partial class Program;
 }
