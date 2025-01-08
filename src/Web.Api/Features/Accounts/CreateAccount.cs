@@ -1,11 +1,9 @@
 using Carter;
 using FluentValidation;
-using Mapster;
 using MediatR;
 using Web.Api.Common;
 using Web.Api.Domain.Abstractions;
 using Web.Api.Domain.Accounts;
-using Web.Api.Infrastructure.Database;
 
 namespace Web.Api.Features.Accounts;
 
@@ -59,9 +57,8 @@ public static class CreateAccount
             var validationResult = await _validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
-                return Result.Failure<CreateAccountResponse>(new Error(
-                    "CreateAccount.Validation",
-                    validationResult.ToString()));
+                return Result.Failure<CreateAccountResponse>(
+                    new Error("CreateAccount.Validation", validationResult.ToString()));
             }
 
             var userAccount = UserAccount.Create(request.FullName);
