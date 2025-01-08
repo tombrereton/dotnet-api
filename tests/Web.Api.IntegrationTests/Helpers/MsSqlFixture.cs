@@ -7,7 +7,7 @@ using Testcontainers.MsSql;
 
 namespace Teeitup.Web.Api.IntegrationTests.Helpers;
 
-public class MsSqlContainerStartup : IAsyncLifetime
+public class MsSqlFixture : IAsyncLifetime
 {
     private readonly MsSqlContainer _msSqlContainer = new MsSqlBuilder().Build();
     protected ServiceProvider Services = null!;

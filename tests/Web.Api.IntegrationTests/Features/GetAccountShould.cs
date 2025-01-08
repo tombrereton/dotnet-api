@@ -10,14 +10,10 @@ using Teeitup.Web.Api.IntegrationTests.Helpers;
 
 namespace Teeitup.Web.Api.IntegrationTests.Features;
 
-public class GetAccountShould : IClassFixture<AppointerWebApplicationFactory<Program>>
+public class GetAccountShould(AppointerWebApplicationFactory<Program> factory)
+    : IClassFixture<AppointerWebApplicationFactory<Program>>
 {
-    private readonly WebApplicationFactory<Program> _factory;
-
-    public GetAccountShould(AppointerWebApplicationFactory<Program> factory)
-    {
-        _factory = factory;
-    }
+    private readonly WebApplicationFactory<Program> _factory = factory;
 
     [Fact]
     public async Task GetExistingAccount()

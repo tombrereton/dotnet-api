@@ -6,7 +6,8 @@ using Teeitup.Web.Api.IntegrationTests.Helpers;
 
 namespace Teeitup.Web.Api.IntegrationTests.Infrastructure.Database;
 
-public class AppointerDbContextShould : MsSqlContainerStartup
+[Collection("MsSqlCollection")]
+public class AppointerDbContextShould : MsSqlFixture
 {
     [Fact]
     public async Task PersistUserAccount()
