@@ -11,6 +11,7 @@ Users can only have 1 account but can have multiple calendars.
 I want to have a starter template for building Dotnet Apis. Things that are important:
 - Excellent developer experience
 - Zero config setup for running integration tests locally against a datastore
+- Zero config setup for running locally with a datastore and message broker
 - Established application architecture e.g. Vertical Slices or Clean Architecture
 - Contains examples for common problems e.g. Validation, Logging, Authentication, Data Access
 
