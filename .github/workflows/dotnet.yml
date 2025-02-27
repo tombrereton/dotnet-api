@@ -34,22 +34,22 @@ jobs:
     - name: 🔧 Setup Cache Folder
       run: mkdir -p ~/image-cache
     
-#    - name: 🔧 Try Get Cache
-#      id: image-cache
-#      uses: actions/cache@v4
-#      with:
-#        path: ~/image-cache
-#        key: image-cache-${{ runner.os }}
-#
-#    - name: 🔧 If Cache miss
-#      if: steps.image-cache.outputs.cache-hit != 'true'
-#      run: |
-#        docker pull mcr.microsoft.com/mssql/server:2019-latest
-#        docker save -o ~/image-cache/mssql.tar mcr.microsoft.com/mssql/server:2019-latest
-#  
-#    - name: 🔧 If Cache hit
-#      if: steps.image-cache.outputs.cache-hit == 'true'
-#      run: docker load -i ~/image-cache/mssql.tar
+    - name: 🔧 Try Get Cache
+      id: image-cache
+      uses: actions/cache@v4
+      with:
+        path: ~/image-cache
+        key: image-cache-${{ runner.os }}
+
+    - name: 🔧 If Cache miss
+      if: steps.image-cache.outputs.cache-hit != 'true'
+      run: |
+        docker pull mcr.microsoft.com/mssql/server:2022-CU13-ubuntu-22.04
+        docker save -o ~/image-cache/mssql.tar mcr.microsoft.com/mssql/server:2022-CU13-ubuntu-22.04
+
+    - name: 🔧 If Cache hit
+      if: steps.image-cache.outputs.cache-hit == 'true'
+      run: docker load -i ~/image-cache/mssql.tar
     
     - name: 🤞 Dotnet Test
       run: dotnet test --no-build --verbosity normal
