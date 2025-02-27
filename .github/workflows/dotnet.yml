@@ -45,8 +45,8 @@ jobs:
       if: steps.image-cache.outputs.cache-hit != 'true'
       run: |
         docker pull mcr.microsoft.com/mssql/server:2019-CU31-ubuntu-20.04
-        docker save -o ~/image-cache/mssql.tar alpine
-
+        docker save -o ~/image-cache/mssql.tar mcr.microsoft.com/mssql/server:2019-CU31-ubuntu-20.04
+  
     - name: 🔧 If Cache hit
       if: steps.image-cache.outputs.cache-hit == 'true'
       run: docker load -i ~/image-cache/mssql.tar
