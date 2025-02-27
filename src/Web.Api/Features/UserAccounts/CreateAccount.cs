@@ -21,11 +21,11 @@ public class CreateAccountEndpoint : ICarterModule
             var result = await sender.Send(request, cancellationToken);
 
             return result.Match(
-                createAccountResponse => Results.Ok(createAccountResponse),
+                response => Results.Ok(response),
                 invalidUserAccount => Results.Problem(
                     statusCode: StatusCodes.Status400BadRequest,
-                    title: nameof(InvalidUserAccount),
-                    detail: invalidUserAccount.Message 
+                    title: nameof(CreateAccount.InvalidUserAccount),
+                    detail: invalidUserAccount.Message
                 )
             );
         });
@@ -37,6 +37,8 @@ public static class CreateAccount
     public record Command(string FullName) : IRequest<OneOf<Response, InvalidUserAccount>>;
 
     public record Response(Guid Id, string FullName);
+
+    public record InvalidUserAccount(string Message);
 
     public class Validator : AbstractValidator<Command>
     {

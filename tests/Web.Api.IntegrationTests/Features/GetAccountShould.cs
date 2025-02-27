@@ -1,6 +1,8 @@
 using System.Net;
 using System.Net.Http.Json;
 using FluentAssertions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Teeitup.Web.Api.Domain.Accounts;
@@ -41,5 +43,27 @@ public class GetAccountShould(AppointerWebApplicationFactory<Program> factory)
         response.Should().NotBeNull();
         response!.Id.Should().NotBeEmpty();
         response.FullName.Should().Be(userAccount.FullName);
+    }
+
+    [Fact]
+    public async Task ShowProblemDetailsIfNotFound()
+    {
+        // arrange
+        var cts = new CancellationTokenSource();
+        cts.CancelAfter(TimeSpan.FromSeconds(30));
+
+        var client = _factory.CreateClient();
+        var notFoundId = Guid.NewGuid();
+        var url = "api/accounts/" + notFoundId;
+
+        // act
+        var result = await client.GetAsync(url, cts.Token);
+
+        // assert
+        result.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        var response = await result.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken: cts.Token);
+        response.Should().NotBeNull();
+        response!.Title.Should().Be(nameof(UserAccountNotFound));
+        response.Detail.Should().Be("User account with id " + notFoundId + " not found.");
     }
 }

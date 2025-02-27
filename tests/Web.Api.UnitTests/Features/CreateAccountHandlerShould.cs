@@ -20,8 +20,8 @@ namespace Teeitup.Web.Api.UnitTests.Features
             var result = await handler.Handle(command, default);
 
             // assert
-            result.Value.Should().BeOfType<InvalidUserAccount>();
-            result.Value.As<InvalidUserAccount>().Message
+            result.Value.Should().BeOfType<CreateAccount.InvalidUserAccount>();
+            result.Value.As<CreateAccount.InvalidUserAccount>().Message
                 .Should().Be("'Full Name' must not be empty.");
         }
     }
