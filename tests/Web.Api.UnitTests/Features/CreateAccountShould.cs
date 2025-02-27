@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Moq;
 using Teeitup.Web.Api.Domain.Abstractions;
-using Teeitup.Web.Api.Features.Accounts;
+using Teeitup.Web.Api.Features.UserAccounts;
 
 namespace Teeitup.Web.Api.UnitTests.Features
 {
@@ -20,9 +20,7 @@ namespace Teeitup.Web.Api.UnitTests.Features
             var result = await handler.Handle(command, default);
 
             // assert
-            result.IsFailure.Should().BeTrue();
-            result.Error.Code.Should().Contain("Validation");
-            result.Error.Message.Should().Contain("Full Name");
+            result.Value.Should().BeOfType<InvalidUserAccount>();
         }
     }
 }

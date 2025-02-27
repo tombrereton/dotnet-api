@@ -3,7 +3,7 @@ using MediatR;
 using Teeitup.Web.Api.Common;
 using Teeitup.Web.Api.Domain.Abstractions;
 
-namespace Teeitup.Web.Api.Features.Accounts;
+namespace Teeitup.Web.Api.Features.UserAccounts;
 
 public class GetAccountEndpoint : ICarterModule
 {
@@ -26,31 +26,22 @@ public class GetAccountEndpoint : ICarterModule
 
 public static class GetAccount
 {
-    public record Query(Guid Id) : IRequest<Result<GetAccountResponse>>;
-
-    public record GetAccountResponse(Guid Id, string FullName);
-
-    public sealed class Handler : IRequestHandler<Query, Result<GetAccountResponse>>
+    public record Query(Guid Id) : IRequest<Result<Response>>;
+    public record Response(Guid Id, string FullName);
+    public sealed class Handler(IUserAccountRepository repository) : IRequestHandler<Query, Result<Response>>
     {
-        private readonly IUserAccountRepository _repository;
-
-        public Handler(IUserAccountRepository repository)
+        public async Task<Result<Response>> Handle(Query request, CancellationToken cancellationToken)
         {
-            _repository = repository;
-        }
-
-        public async Task<Result<GetAccountResponse>> Handle(Query request, CancellationToken cancellationToken)
-        {
-            var account = await _repository.GetAsync(request.Id, cancellationToken);
+            var account = await repository.GetAsync(request.Id, cancellationToken);
 
             if (account is null)
             {
-                return Result.Failure<GetAccountResponse>(new Error(
+                return Result.Failure<Response>(new Error(
                     "GetArticle.Null",
                     "The article with the specified ID was not found"));
             }
 
-            return new GetAccountResponse(account.Id, account.FullName);
+            return new Response(account.Id, account.FullName);
         }
     }
 }

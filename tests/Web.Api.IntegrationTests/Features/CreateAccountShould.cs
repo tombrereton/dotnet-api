@@ -4,7 +4,7 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Teeitup.Web.Api.Features.Accounts;
+using Teeitup.Web.Api.Features.UserAccounts;
 using Teeitup.Web.Api.Infrastructure.Database;
 using Teeitup.Web.Api.IntegrationTests.Helpers;
 
@@ -29,7 +29,7 @@ public class CreateAccountShould(AppointerWebApplicationFactory<Program> factory
 
         // assert
         result.StatusCode.Should().Be(HttpStatusCode.OK);
-        var response = await result.Content.ReadFromJsonAsync<CreateAccount.CreateAccountResponse>();
+        var response = await result.Content.ReadFromJsonAsync<CreateAccount.Response>();
         response.Should().NotBeNull();
         response!.Id.Should().NotBeEmpty();
         response.FullName.Should().Be(fullName);
@@ -55,7 +55,7 @@ public class CreateAccountShould(AppointerWebApplicationFactory<Program> factory
 
         // assert
         result.StatusCode.Should().Be(HttpStatusCode.OK);
-        var response = await result.Content.ReadFromJsonAsync<CreateAccount.CreateAccountResponse>();
+        var response = await result.Content.ReadFromJsonAsync<CreateAccount.Response>();
         response.Should().NotBeNull();
         response!.Id.Should().NotBeEmpty();
 

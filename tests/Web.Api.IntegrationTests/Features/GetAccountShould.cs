@@ -4,7 +4,7 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Teeitup.Web.Api.Domain.Accounts;
-using Teeitup.Web.Api.Features.Accounts;
+using Teeitup.Web.Api.Features.UserAccounts;
 using Teeitup.Web.Api.Infrastructure.Database;
 using Teeitup.Web.Api.IntegrationTests.Helpers;
 
@@ -37,7 +37,7 @@ public class GetAccountShould(AppointerWebApplicationFactory<Program> factory)
 
         // assert
         result.StatusCode.Should().Be(HttpStatusCode.OK);
-        var response = await result.Content.ReadFromJsonAsync<GetAccount.GetAccountResponse>(cancellationToken);
+        var response = await result.Content.ReadFromJsonAsync<GetAccount.Response>(cancellationToken);
         response.Should().NotBeNull();
         response!.Id.Should().NotBeEmpty();
         response.FullName.Should().Be(userAccount.FullName);
