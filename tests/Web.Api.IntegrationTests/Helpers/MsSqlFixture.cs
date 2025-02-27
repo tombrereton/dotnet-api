@@ -9,7 +9,11 @@ namespace Teeitup.Web.Api.IntegrationTests.Helpers;
 
 public class MsSqlFixture : IAsyncLifetime
 {
-    private readonly MsSqlContainer _msSqlContainer = new MsSqlBuilder().Build();
+    private readonly MsSqlContainer _msSqlContainer = new MsSqlBuilder()
+        .WithImage("mcr.microsoft.com/mssql/server:2022-CU13-ubuntu-22.04")
+        .WithCleanUp(true)
+        .Build();
+    
     protected ServiceProvider Services = null!;
 
     public async Task InitializeAsync()
