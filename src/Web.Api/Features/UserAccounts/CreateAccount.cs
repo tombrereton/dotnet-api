@@ -1,4 +1,6 @@
+using System.Net;
 using Carter;
+using Carter.ModelBinding;
 using FluentValidation;
 using MediatR;
 using OneOf;
@@ -17,10 +19,14 @@ public class CreateAccountEndpoint : ICarterModule
             CancellationToken cancellationToken) =>
         {
             var result = await sender.Send(request, cancellationToken);
-            
+
             return result.Match(
                 createAccountResponse => Results.Ok(createAccountResponse),
-                invalidUserAccount => Results.BadRequest()
+                invalidUserAccount => Results.Problem(
+                    statusCode: StatusCodes.Status400BadRequest,
+                    title: nameof(InvalidUserAccount),
+                    detail: invalidUserAccount.Message 
+                )
             );
         });
     }
@@ -29,7 +35,9 @@ public class CreateAccountEndpoint : ICarterModule
 public static class CreateAccount
 {
     public record Command(string FullName) : IRequest<OneOf<Response, InvalidUserAccount>>;
+
     public record Response(Guid Id, string FullName);
+
     public class Validator : AbstractValidator<Command>
     {
         public Validator()
@@ -41,12 +49,13 @@ public static class CreateAccount
     public sealed class Handler(IUserAccountRepository repository, IValidator<Command> validator)
         : IRequestHandler<Command, OneOf<Response, InvalidUserAccount>>
     {
-        public async Task<OneOf<Response, InvalidUserAccount>> Handle(Command request, CancellationToken cancellationToken)
+        public async Task<OneOf<Response, InvalidUserAccount>> Handle(Command request,
+                                                                      CancellationToken cancellationToken)
         {
             var validationResult = await validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
-                return new InvalidUserAccount();
+                return new InvalidUserAccount(validationResult.ToString());
             }
 
             var userAccount = UserAccount.Create(request.FullName);

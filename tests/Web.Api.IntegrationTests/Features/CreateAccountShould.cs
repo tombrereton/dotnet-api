@@ -1,6 +1,8 @@
 using System.Net;
 using System.Net.Http.Json;
 using FluentAssertions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +41,27 @@ public class CreateAccountShould(AppointerWebApplicationFactory<Program> factory
         var newUserAccount = await dbContext.UserAccounts.FindAsync(response.Id);
         newUserAccount.Should().NotBeNull();
         newUserAccount?.FullName.Should().Be(fullName);
+    }
+    
+    [Fact]
+    public async Task ShowProblemDetailsWhenInvalid()
+    {
+        // arrange
+        var client = _factory.CreateClient();
+        var url = "api/accounts";
+        var fullName = string.Empty;
+        var request = new CreateAccount.Command(FullName: fullName);
+
+        // act
+        var result = await client.PostAsJsonAsync(url, request);
+
+        // assert
+        result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        var response = await result.Content.ReadFromJsonAsync<ProblemDetails>();
+        response.Should().NotBeNull();
+        response!.Title.Should().Be(nameof(InvalidUserAccount));
+        response.Detail.Should().Be("'Full Name' must not be empty.");
+        response.Status.Should().Be(StatusCodes.Status400BadRequest);
     }
 
     [Fact]

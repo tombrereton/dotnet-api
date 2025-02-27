@@ -1,3 +1,3 @@
 namespace Teeitup.Web.Api.Features.UserAccounts;
 
-public record InvalidUserAccount();
+public record InvalidUserAccount(string Message);

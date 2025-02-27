@@ -1,4 +1,5 @@
 using Carter;
+using Microsoft.AspNetCore.Http.Features;
 using Teeitup.ServiceDefaults;
 using Teeitup.Web.Api.Features;
 using Teeitup.Web.Api.Infrastructure;
@@ -13,6 +14,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddFeatures();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddProblemDetails(options =>
+{
+    options.CustomizeProblemDetails = context =>
+    {
+        var httpContext = context.HttpContext;
+        context.ProblemDetails.Instance = $"{httpContext.Request.Method}-{httpContext.Request.Path}";
+        context.ProblemDetails.Extensions.TryAdd("requestId", httpContext.TraceIdentifier);
+        var activity = httpContext.Features.Get<IHttpActivityFeature>()?.Activity;
+        context.ProblemDetails.Extensions.TryAdd("traceId", activity?.Id);
+    };
+});
 
 var app = builder.Build();
 app.MapDefaultEndpoints();

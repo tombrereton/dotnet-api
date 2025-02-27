@@ -5,7 +5,7 @@ using Teeitup.Web.Api.Features.UserAccounts;
 
 namespace Teeitup.Web.Api.UnitTests.Features
 {
-    public class CreateAccountShould
+    public class CreateAccountHandlerShould
     {
         [Fact]
         public async Task ValidateCommand()
@@ -21,6 +21,8 @@ namespace Teeitup.Web.Api.UnitTests.Features
 
             // assert
             result.Value.Should().BeOfType<InvalidUserAccount>();
+            result.Value.As<InvalidUserAccount>().Message
+                .Should().Be("'Full Name' must not be empty.");
         }
     }
 }
