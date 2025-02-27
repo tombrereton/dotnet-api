@@ -16,10 +16,11 @@ public class GetAccountEndpoint : ICarterModule
 
             return result.Match(
                 response => Results.Ok(response),
+                
                 userAccountNotFound => Results.Problem(
                     statusCode: StatusCodes.Status404NotFound,
-                    title: nameof(UserAccountNotFound),
-                    detail: userAccountNotFound.Message 
+                    title: nameof(GetAccount.UserAccountNotFound),
+                    detail: userAccountNotFound.Message
                 )
             );
         });
@@ -29,10 +30,16 @@ public class GetAccountEndpoint : ICarterModule
 public static class GetAccount
 {
     public record Query(Guid Id) : IRequest<OneOf<Response, UserAccountNotFound>>;
+
     public record Response(Guid Id, string FullName);
-    public sealed class Handler(IUserAccountRepository repository) : IRequestHandler<Query, OneOf<Response, UserAccountNotFound>>
+
+    public record UserAccountNotFound(string Message);
+
+    public sealed class Handler(IUserAccountRepository repository)
+        : IRequestHandler<Query, OneOf<Response, UserAccountNotFound>>
     {
-        public async Task<OneOf<Response, UserAccountNotFound>> Handle(Query request, CancellationToken cancellationToken)
+        public async Task<OneOf<Response, UserAccountNotFound>> Handle(Query request,
+                                                                       CancellationToken cancellationToken)
         {
             var account = await repository.GetAsync(request.Id, cancellationToken);
 

@@ -63,7 +63,7 @@ public class GetAccountShould(AppointerWebApplicationFactory<Program> factory)
         result.StatusCode.Should().Be(HttpStatusCode.NotFound);
         var response = await result.Content.ReadFromJsonAsync<ProblemDetails>(cancellationToken: cts.Token);
         response.Should().NotBeNull();
-        response!.Title.Should().Be(nameof(UserAccountNotFound));
+        response!.Title.Should().Be(nameof(GetAccount.UserAccountNotFound));
         response.Detail.Should().Be("User account with id " + notFoundId + " not found.");
     }
 }
