@@ -14,7 +14,6 @@ public class AppointerWebApplicationFactory<TProgram> : WebApplicationFactory<TP
     where TProgram : class
 {
     private readonly MsSqlContainer _msSqlContainer = new MsSqlBuilder()
-        .WithImage("mcr.microsoft.com/mssql/server:2019-CU31-ubuntu-20.04")
         .WithCleanUp(true)
         .Build();
 
