@@ -44,7 +44,7 @@ jobs:
     - name: 🔧 If Cache miss
       if: steps.image-cache.outputs.cache-hit != 'true'
       run: |
-        docker pull mcr.microsoft.com/mssql/server:server:2019-latest
+        docker pull mcr.microsoft.com/mssql/server:2019-latest
         docker save -o ~/image-cache/mssql.tar mcr.microsoft.com/mssql/server:2019-latest
   
     - name: 🔧 If Cache hit
