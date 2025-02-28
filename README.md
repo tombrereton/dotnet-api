@@ -16,13 +16,13 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
 - Contains examples for common problems e.g. Validation, Logging, Authentication, Data Access
 
 ## Features or Patterns
-- [x] Zero config integration testing against the database
+- [x] [Zero config integration testing](./tests/Web.Api.IntegrationTests/Helpers/AppointerWebApplicationFactory.cs) against the database
 - [ ] Zero config integration testing with events
 - [ ] Zero config integration test with authentication
 - [x] Architecture tests to enforce intended architecture i.e. Domain code has minimal dependencies
 - [x] Vertical Slice Architecture
 - [ ] Validation
-- [ ] Use Repositorities to enforce write data access through Aggregate Roots
+- [x] Use Repositorities to enforce write data access through Aggregate Roots
 - [ ] Use Dapper or EF Core Raw SQL for read data access
 - [ ] Logging
 - [ ] Error Handling
