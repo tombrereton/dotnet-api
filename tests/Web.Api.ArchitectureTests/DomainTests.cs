@@ -4,36 +4,34 @@ using NetArchTest.Rules;
 
 namespace Teeitup.Web.Api.ArchitectureTests
 {
-    public class DomainTests
+    public class DomainClassesShould
     {
         private readonly Assembly _assembly = typeof(Program).Assembly;
 
         [Fact]
-        public void DomainClasses_ShouldNotDependOnInfrastructure()
+        public void NotDependOnInfrastructure()
         {
             var result = Types.InAssembly(_assembly)
                 .That()
-                .ResideInNamespace("Appointer.Web.Api.Domain")
+                .ResideInNamespace("Teeitup.Web.Api.Domain")
                 .Should()
-                .NotHaveDependencyOn("Appointer.Web.Api.Infrastructure")
-                .GetResult()
-                .IsSuccessful;
+                .NotHaveDependencyOn("Teeitup.Web.Api.Infrastructure")
+                .GetResult();
 
-            result.Should().BeTrue();
+            result.FailingTypes?.Should().BeSameAs([]);
         }
 
         [Fact]
-        public void DomainClasses_ShouldNotDependOnFeatures()
+        public void NotDependOnFeatures()
         {
             var result = Types.InAssembly(_assembly)
                 .That()
-                .ResideInNamespace("Web.Api.Domain")
+                .ResideInNamespace("Teeitup.Web.Api.Domain")
                 .Should()
-                .NotHaveDependencyOn("Web.Api.Features")
-                .GetResult()
-                .IsSuccessful;
+                .NotHaveDependencyOn("Teeitup.Web.Api.Features")
+                .GetResult();
 
-            result.Should().BeTrue();
+            result.FailingTypes?.Should().BeSameAs([]);
         }
     }
 }

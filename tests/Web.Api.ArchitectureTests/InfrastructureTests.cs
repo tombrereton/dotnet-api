@@ -13,13 +13,12 @@ namespace Teeitup.Web.Api.ArchitectureTests
         {
             var result = Types.InAssembly(_assembly)
                 .That()
-                .ResideInNamespace("Web.Api.Infrastructure")
+                .ResideInNamespace("Teeitup.Web.Api.Infrastructure")
                 .Should()
-                .NotHaveDependencyOn("Web.Api.Features")
-                .GetResult()
-                .IsSuccessful;
+                .NotHaveDependencyOn("Teeitup.Web.Api.Features")
+                .GetResult();
 
-            result.Should().BeTrue();
+            result.FailingTypes?.Should().BeSameAs([]);
         }
     }
 }
