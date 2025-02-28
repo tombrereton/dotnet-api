@@ -23,8 +23,8 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
 - [ ] Zero config integration testing with events
 - [ ] Zero config integration test with authentication
 - [x] [Zero config when running Api locally](src/AppHost/Program.cs) and depends on databases or a message broker
-- [x] [Consistent connection strings](/src/AppHost/Program.cs#L7) for dependencies like databases, so you can easily use things like Sql Server Management Studio (SSMS)
-- [x] Architecture tests to enforce intended architecture i.e. [Domain layer cannot depend on Infrastructure or Feature](tests/Web.Api.ArchitectureTests/DomainTests.cs)
+- [x] [Consistent connection strings](/src/AppHost/Program.cs#L7) for dependencies like databases, so it's easier to use database clients e.g. SSMS
+- [x] Architecture tests to enforce intended architecture e.g. [Domain layer cannot depend on Infrastructure or Features](tests/Web.Api.ArchitectureTests/DomainTests.cs)
 - [x] [Vertical Slice Architecture](src/Web.Api/Features/UserAccounts/CreateAccount.cs)
 - [ ] Validation
 - [x] Use Repositories to enforce write [data access through Aggregate Roots](src/Web.Api/Infrastructure/Repositories/Repository.cs)
