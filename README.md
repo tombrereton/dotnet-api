@@ -8,30 +8,35 @@ Users create an account with a default calendar and can add, remove, update or d
 Users can only have 1 account but can have multiple calendars.
 
 ## Motivation
-I want to have a starter template for building Dotnet Apis. Things that are important:
+I want to have a starter template for building enterprise grade Dotnet Apis. Things that are important:
 - Excellent developer experience
 - Zero config setup for running integration tests locally against a datastore
 - Zero config setup for running locally with a datastore and message broker
 - Established application architecture e.g. Vertical Slices or Clean Architecture
 - Contains examples for common problems e.g. Validation, Logging, Authentication, Data Access
 
-## Features
+## Features or Patterns
 - [x] Zero config integration testing against the database
 - [ ] Zero config integration testing with events
 - [ ] Zero config integration test with authentication
-- [x] Architecture tests to enforce intended architecture i.e. Domain code cannot use code from Infrastructure
+- [x] Architecture tests to enforce intended architecture i.e. Domain code has minimal dependencies
 - [x] Vertical Slice Architecture
 - [ ] Validation
 - [ ] Use Repositorities to enforce write data access through Aggregate Roots
 - [ ] Use Dapper or EF Core Raw SQL for read data access
 - [ ] Logging
 - [ ] Error Handling
+- [ ] Semantic Versions
+- [ ] Client generation from OpenApi spec
+- [ ] Infra code (Terraform) for Azure
+- [ ] Build Pipeline which also runs Unit and Integration Tests
+- [ ] Release pipeline which generates Clients and Deploys Api and Background Worker
 
 ## Technologies
 - Testcontainers
 - xUnit
 - EF Core for writing to the datastore
-- Dapper for reading from the datastore
+- EF Core SQL for reading from datastore
 - FluentValidation
 - Serilog
 
