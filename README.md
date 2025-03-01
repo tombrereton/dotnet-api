@@ -61,9 +61,9 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
 
 ## Architectural Decision Records
 
-- _November 2024_: Have a thin endpoint/controller and move the logic into a handler/service class so it's (1) unit
-  testable and (2) decoupled from the endpoint framework to ease with refactoring e.g. moving the handlers to a `Core`
-  or `Application` project and changing the executable project to function app
+- _November 2024_: Have thin endpoints or controllers and move the business logic into a handler class so the logic is
+  decoupled from the endpoint framework. This makes testing the business logic less brittle and refactoring easier e.g.
+  moving the handlers to a common project which can be used by both the Api and Background Worker.
 - ~~_November 2024 (Exploring)_:
   Use [Result](https://www.milanjovanovic.tech/blog/functional-error-handling-in-dotnet-with-the-result-pattern) objects
   for control flow instead of exceptions. In common code paths like validation or business rules use Result.Failure() or
@@ -76,7 +76,8 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
 - _November 2024_: Use Mediatr with CQS. This is more in line with SOLID and Open Closed princinples; where each handler
   is responsible for 1 use case e.g. GetAccount or CreateAccount. This is in contrast to Service class which would be
   responsible for both of these use cases, as more use cases are added the service adopts too much responsibility,
-  becomes less cohesive, and consequently becomes hard to maintain or modify.
+  becomes less cohesive, and consequently becomes hard to maintain or modify. We also use Mediatr to prevent constructor
+  explosion and implement cross-cutting concerns for both the Api and Background Worker.
 - _February 2025 (Exploring)_: Use [Discriminated Unions](https://github.com/mcintyre321/OneOf) (previously explored
   [Result](https://www.milanjovanovic.tech/blog/functional-error-handling-in-dotnet-with-the-result-pattern)
   objects) for control flow instead of exceptions. In common code paths like validation or business rules use Oneof<
