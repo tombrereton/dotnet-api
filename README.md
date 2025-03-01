@@ -22,20 +22,21 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
 - [x] [Zero config integration testing](/tests/Web.Api.IntegrationTests/Helpers/AppointerWebApplicationFactory.cs) against the database
 - [ ] Zero config integration testing with events
 - [ ] Zero config integration test with authentication
-- [x] [Zero config when running Api locally](src/AppHost/Program.cs) and depends on databases or a message broker
-- [x] [Consistent connection strings](/src/AppHost/Program.cs#L7) for dependencies like databases, so it's easier to use database clients e.g. SSMS
-- [x] Architecture tests to enforce intended architecture e.g. [Domain layer cannot depend on Infrastructure or Features](tests/Web.Api.ArchitectureTests/DomainTests.cs)
-- [x] [Vertical Slice Architecture](src/Web.Api/Features/UserAccounts/CreateAccount.cs)
+- [x] [Zero config when running Api locally](/src/AppHost/Program.cs) and depends on databases or a message broker
+- [x] [Consistent connection strings](/src/AppHost/Program.cs#L7) when running locally so it's easier to use database clients e.g. SSMS
+- [x] Architecture tests to enforce intended architecture e.g. [Domain layer cannot depend on Infrastructure or Features](/tests/Web.Api.ArchitectureTests/DomainTests.cs)
+- [x] [Vertical Slice Architecture](/src/Web.Api/Features/UserAccounts/CreateAccount.cs)
 - [ ] Validation
-- [x] Use Repositories to enforce write [data access through Aggregate Roots](src/Web.Api/Infrastructure/Repositories/Repository.cs)
+- [x] Use Repositories to enforce write [data access through Aggregate Roots](/src/Web.Api/Infrastructure/Repositories/Repository.cs)
 - [ ] Use Dapper or EF Core Raw SQL for read data access
 - [ ] Logging
 - [ ] Error Handling
-- [ ] Semantic Versions
+- [ ] Semantic Versioning
 - [ ] Client generation from OpenApi spec
 - [ ] Infra code (Terraform) for Azure
-- [ ] Build Pipeline which also runs Unit and Integration Tests
-- [ ] Release pipeline which generates Clients and Deploys Api and Background Worker
+- [ ] Build Pipeline which runs tests and builds the Api
+- [ ] Release pipeline which generates clients libraries and deploys the Api and Background Worker
+- [ ] Tracks performance metrics to detect performance regressions
 
 ## Technologies
 
