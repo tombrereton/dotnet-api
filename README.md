@@ -82,7 +82,8 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
   objects) for control flow instead of exceptions. In common code paths like validation or business rules use Oneof<
   CreateAccountResponse, InvalidUserAccount> and use Exceptions for situations like failed connection, out of
   memory, access array incorrectly. We use discriminated unions instead of the Result object because it's more
-  expressive, handling the result is simpler, type safety for errors, and it's easier to add new cases.
+  expressive, handling the result is simpler, type safety for errors,
+  and [Microsoft may add them to C#](https://github.com/dotnet/csharplang/blob/main/proposals/TypeUnions.md).
 
 ## Prerequisites
 
