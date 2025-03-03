@@ -2,7 +2,8 @@
   "profiles": {
     "Worker": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"
       }

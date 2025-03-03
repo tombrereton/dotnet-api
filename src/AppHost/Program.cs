@@ -13,9 +13,16 @@ var messageBroker = builder
     .AddAzureServiceBus("messaging")
     .RunAsEmulator();
 
+builder.AddProject<Projects.Worker>("Worker")
+    .WithReference(database)
+    .WithReference(messageBroker)
+    .WaitFor(messageBroker)
+    .WaitFor(database);
+
 builder.AddProject<Projects.Web_Api>("Web-Api")
     .WithReference(database)
     .WithReference(messageBroker)
+    .WaitFor(messageBroker)
     .WaitFor(database);
 
 builder.Build().Run();
