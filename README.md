@@ -29,6 +29,7 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
 - [x] Architecture tests to enforce intended architecture
   e.g. [Domain layer cannot depend on Infrastructure or Features](/tests/Web.Api.ArchitectureTests/DomainTests.cs)
 - [x] [Vertical Slice Architecture](/src/Web.Api/Features/UserAccounts/CreateAccount.cs)
+- [x] Use [problem details](/src/Web.Api/Features/UserAccounts/CreateAccount.cs#L23) when returning bad responses
 - [ ] Validation
 - [x] Use Repositories to enforce
   write [data access through Aggregate Roots](/src/Web.Api/Infrastructure/Repositories/Repository.cs)
