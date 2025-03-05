@@ -5,10 +5,9 @@ using Teeitup.Worker.Contracts;
 
 namespace Teeitup.Worker.Consumers;
 
-public class GettingStartedConsumer :
-    IConsumer<GettingStarted>
+public class GettingStartedConsumer : IConsumer<GettingStarted>
 {
-    readonly ILogger<GettingStartedConsumer> _logger;
+    private readonly ILogger<GettingStartedConsumer> _logger;
 
     public GettingStartedConsumer(ILogger<GettingStartedConsumer> logger)
     {

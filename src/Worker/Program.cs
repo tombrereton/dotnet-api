@@ -4,6 +4,7 @@ using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Teeitup.Worker.Consumers;
 
 namespace Teeitup.Worker;
 
@@ -21,26 +22,33 @@ public class Program
                 services.AddMassTransit(x =>
                 {
                     x.SetKebabCaseEndpointNameFormatter();
+                    x.AddConsumer<GettingStartedConsumer>();
 
-                    // By default, sagas are in-memory, but should be changed to a durable
-                    // saga repository.
-                    x.SetInMemorySagaRepositoryProvider();
-
-                    var entryAssembly = Assembly.GetEntryAssembly();
-
-                    x.AddConsumers(entryAssembly);
-                    x.AddSagaStateMachines(entryAssembly);
-                    x.AddSagas(entryAssembly);
-                    x.AddActivities(entryAssembly);
-
-                    x.UsingAzureServiceBus((context, cfg) =>
+                    if (hostContext.HostingEnvironment.IsDevelopment())
                     {
-                        cfg.Host(hostContext.Configuration.GetConnectionString("messaging"));
+                        x.UsingRabbitMq((context, cfg) =>
+                        {
+                            var connectionString = hostContext.Configuration.GetConnectionString("messaging");
+                            cfg.Host(connectionString);
+                            cfg.ConfigureEndpoints(context);
+                        });
+                    }
+                    // var entryAssembly = Assembly.GetEntryAssembly();
+                    // x.AddConsumers(entryAssembly);
+                    // x.AddSagaStateMachines(entryAssembly);
+                    // x.AddSagas(entryAssembly);
+                    // x.AddActivities(entryAssembly);
 
-                        cfg.ConfigureEndpoints(context);
-                    });
+                    // x.UsingInMemory((context, configurator) =>
+                    // {
+                    //     configurator.ConfigureEndpoints(context);
+                    // });
+                    // x.UsingAzureServiceBus((context, cfg) =>
+                    // {
+                    //     var connectionString = hostContext.Configuration.GetConnectionString("messaging");
+                    //     cfg.Host(connectionString);
+                    //     cfg.ConfigureEndpoints(context);
+                    // });
                 });
-
-                services.AddHostedService<Teeitup.Worker.Worker>();
             });
 }

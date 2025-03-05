@@ -10,8 +10,7 @@ var database = sqlserver
     .AddDatabase("database");
 
 var messageBroker = builder
-    .AddAzureServiceBus("messaging")
-    .RunAsEmulator();
+    .AddRabbitMQ("messaging");
 
 builder.AddProject<Projects.Worker>("Worker")
     .WithReference(database)

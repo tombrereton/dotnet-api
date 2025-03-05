@@ -86,6 +86,8 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
   memory, or access array incorrectly. We use discriminated unions instead of the Result object because it's more
   expressive, handling the result is simpler, type safety for errors,
   and [Microsoft may add them to C#](https://github.com/dotnet/csharplang/blob/main/proposals/TypeUnions.md).
+- _March 2025_: Use RabbitMq for local development (e.g. Aspire, Testcontainers) as the Azure Service Bus emulator does
+  not support the Admin Api, which Masstransit requires for creating queues and topics.
 
 ## Prerequisites
 
