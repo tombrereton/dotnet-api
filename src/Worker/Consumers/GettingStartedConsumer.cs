@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using MassTransit;
 using Microsoft.Extensions.Logging;
-using Teeitup.Worker.Contracts;
+using Teeitup.Core.Contracts;
 
 namespace Teeitup.Worker.Consumers;
 

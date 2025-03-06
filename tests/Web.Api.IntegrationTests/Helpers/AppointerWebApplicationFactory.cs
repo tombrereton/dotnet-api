@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
@@ -20,6 +21,11 @@ public class AppointerWebApplicationFactory<TProgram> : WebApplicationFactory<TP
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
+        builder.ConfigureServices(services =>
+        {
+            services.AddMassTransitTestHarness();
+        });
+        
         builder.ConfigureTestServices(services =>
         {
             services.RemoveDbContext<AppointerDbContext>();
@@ -28,6 +34,7 @@ public class AppointerWebApplicationFactory<TProgram> : WebApplicationFactory<TP
                 options.UseSqlServer(_msSqlContainer.GetConnectionString());
             });
             services.EnsureDbCreated<AppointerDbContext>();
+            // services.AddMassTransitTestHarness();
         });
     }
 

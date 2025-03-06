@@ -1,4 +1,5 @@
 using Carter;
+using MassTransit;
 using Teeitup.ServiceDefaults;
 using Teeitup.Web.Api.Features;
 using Teeitup.Web.Api.Infrastructure;
@@ -15,6 +16,15 @@ builder.Services.AddFeatures();
 builder.Services.AddProblemDetailsForTeeitup();
 builder.Services.AddInfrastructure(builder.Configuration);
 
+builder.Services.AddMassTransit(x =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("messaging");
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(connectionString);
+        cfg.ConfigureEndpoints(context);
+    });
+});
 var app = builder.Build();
 app.MapDefaultEndpoints();
 

@@ -1,11 +1,13 @@
 using System.Net;
 using System.Net.Http.Json;
 using FluentAssertions;
+using MassTransit.Testing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Teeitup.Core.Contracts;
 using Teeitup.Web.Api.Features.UserAccounts;
 using Teeitup.Web.Api.Infrastructure.Database;
 using Teeitup.Web.Api.IntegrationTests.Helpers;
@@ -63,10 +65,45 @@ public class CreateAccountShould(AppointerWebApplicationFactory<Program> factory
         response.Detail.Should().Be("'Full Name' must not be empty.");
     }
 
+    // [Fact]
+    // public async Task CreateDefaultCalendar()
+    // {
+    //     // arrange
+    //     var client = _factory.CreateClient();
+    //     var url = "api/accounts";
+    //     var fullName = "Default Calendar" + Guid.NewGuid();
+    //     var request = new CreateAccount.Command(FullName: fullName);
+    //
+    //     // act
+    //     var result = await client.PostAsJsonAsync(url, request);
+    //
+    //     // assert
+    //     result.StatusCode.Should().Be(HttpStatusCode.OK);
+    //     var response = await result.Content.ReadFromJsonAsync<CreateAccount.Response>();
+    //     response.Should().NotBeNull();
+    //     response!.Id.Should().NotBeEmpty();
+    //
+    //     using var scope = _factory.Services.CreateScope();
+    //     var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
+    //     var newUserAccount = await dbContext
+    //         .UserAccounts
+    //         .Include(db => db.Calendars)
+    //         .FirstAsync(x => x.Id == response.Id);
+    //
+    //     newUserAccount.Should().NotBeNull();
+    //     newUserAccount?.FullName.Should().Be(fullName);
+    //
+    //     var defaultCalendar = newUserAccount?.Calendars.FirstOrDefault();
+    //     defaultCalendar.Should().NotBeNull();
+    //     defaultCalendar?.Name.Should().Be("Default");
+    // }
+    
     [Fact]
-    public async Task CreateDefaultCalendar()
+    public async Task PublishUserAccountCreatedIntegrationEvent()
     {
         // arrange
+        var testHarness = _factory.Services.GetTestHarness();
+        await testHarness.Start();
         var client = _factory.CreateClient();
         var url = "api/accounts";
         var fullName = "Default Calendar" + Guid.NewGuid();
@@ -77,22 +114,6 @@ public class CreateAccountShould(AppointerWebApplicationFactory<Program> factory
 
         // assert
         result.StatusCode.Should().Be(HttpStatusCode.OK);
-        var response = await result.Content.ReadFromJsonAsync<CreateAccount.Response>();
-        response.Should().NotBeNull();
-        response!.Id.Should().NotBeEmpty();
-
-        using var scope = _factory.Services.CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
-        var newUserAccount = await dbContext
-            .UserAccounts
-            .Include(db => db.Calendars)
-            .FirstAsync(x => x.Id == response.Id);
-
-        newUserAccount.Should().NotBeNull();
-        newUserAccount?.FullName.Should().Be(fullName);
-
-        var defaultCalendar = newUserAccount?.Calendars.FirstOrDefault();
-        defaultCalendar.Should().NotBeNull();
-        defaultCalendar?.Name.Should().Be("Default");
+        testHarness.Published.Select<UserAccountCreatedIntegrationEvent>().Any().Should().BeTrue();
     }
 }

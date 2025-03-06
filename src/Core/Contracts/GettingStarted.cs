@@ -1,3 +1,3 @@
-namespace Teeitup.Worker.Contracts;
+namespace Teeitup.Core.Contracts;
 
 public record GettingStarted(string Message);

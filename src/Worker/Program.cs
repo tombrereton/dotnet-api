@@ -1,9 +1,12 @@
+using System;
 using System.Reflection;
 using System.Threading.Tasks;
 using MassTransit;
+using MassTransit.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OpenTelemetry.Resources;
 using Teeitup.Worker.Consumers;
 
 namespace Teeitup.Worker;
@@ -15,10 +18,22 @@ public class Program
         await CreateHostBuilder(args).Build().RunAsync();
     }
 
+
+    private static void ConfigureResource(ResourceBuilder r)
+    {
+        r.AddService("Teeitup.Worker",
+            serviceVersion: "1.0.0",
+            serviceInstanceId: Environment.MachineName);
+    }
+
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
             .ConfigureServices((hostContext, services) =>
             {
+                services.AddOpenTelemetry()
+                    .ConfigureResource(ConfigureResource)
+                    .WithTracing(b => b.AddSource(DiagnosticHeaders.DefaultListenerName));
+
                 services.AddMassTransit(x =>
                 {
                     x.SetKebabCaseEndpointNameFormatter();

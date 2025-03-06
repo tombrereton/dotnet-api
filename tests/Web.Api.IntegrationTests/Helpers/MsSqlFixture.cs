@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Teeitup.Web.Api.Features;
@@ -30,6 +31,7 @@ public class MsSqlFixture : IAsyncLifetime
         Services = new ServiceCollection()
             .AddInfrastructure(config)
             .AddFeatures()
+            .AddMassTransitTestHarness()
             .BuildServiceProvider();
 
         var db = Services.GetRequiredService<AppointerDbContext>();
