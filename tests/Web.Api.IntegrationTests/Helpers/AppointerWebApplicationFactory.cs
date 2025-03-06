@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Teeitup.Web.Api.Infrastructure.Database;
-using Teeitup.Web.Api.Infrastructure.Extensions;
+using Teeitup.Core.Infrastructure.Database;
+using Teeitup.Core.Infrastructure.Extensions;
 using Testcontainers.MsSql;
 
 namespace Teeitup.Web.Api.IntegrationTests.Helpers;

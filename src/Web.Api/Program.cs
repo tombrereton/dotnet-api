@@ -1,10 +1,11 @@
 using Carter;
 using MassTransit;
+using Teeitup.Core.Application;
+using Teeitup.Core.Infrastructure;
+using Teeitup.Core.Infrastructure.Database;
+using Teeitup.Core.Infrastructure.Extensions;
 using Teeitup.ServiceDefaults;
-using Teeitup.Web.Api.Features;
-using Teeitup.Web.Api.Infrastructure;
-using Teeitup.Web.Api.Infrastructure.Database;
-using Teeitup.Web.Api.Infrastructure.Extensions;
+using Teeitup.Web.Api.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,9 +13,10 @@ builder.AddServiceDefaults();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddFeatures();
-builder.Services.AddProblemDetailsForTeeitup();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
+builder.Services.AddEndpoints();
+builder.Services.AddProblemDetailsForTeeitup();
 
 builder.Services.AddMassTransit(x =>
 {

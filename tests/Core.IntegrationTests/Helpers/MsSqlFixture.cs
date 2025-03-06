@@ -1,12 +1,12 @@
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Teeitup.Core.Application;
 using Teeitup.Core.Infrastructure;
 using Teeitup.Core.Infrastructure.Database;
-using Teeitup.Web.Api.Endpoints;
 using Testcontainers.MsSql;
 
-namespace Teeitup.Web.Api.IntegrationTests.Helpers;
+namespace Core.IntegrationTests.Helpers;
 
 public class MsSqlFixture : IAsyncLifetime
 {
@@ -29,8 +29,8 @@ public class MsSqlFixture : IAsyncLifetime
             .Build();
 
         Services = new ServiceCollection()
+            .AddApplication()
             .AddInfrastructure(config)
-            .AddEndpoints()
             .AddMassTransitTestHarness()
             .BuildServiceProvider();
 
