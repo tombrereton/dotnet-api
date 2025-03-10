@@ -12,8 +12,8 @@ using Teeitup.Web.Api.IntegrationTests.Helpers;
 
 namespace Teeitup.Web.Api.IntegrationTests.Endpoints;
 
-public class CreateAccountShould(AppointerWebApplicationFactory<Program> factory)
-    : IClassFixture<AppointerWebApplicationFactory<Program>>
+public class CreateAccountShould(TeeitupWebApplicationFactory<Program> factory)
+    : IClassFixture<TeeitupWebApplicationFactory<Program>>
 {
     private readonly WebApplicationFactory<Program> _factory = factory;
 
