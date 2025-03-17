@@ -3,12 +3,12 @@ using Teeitup.Core.Contracts;
 
 namespace Worker;
 
-public class Worker : BackgroundService
+public class CronWorker : BackgroundService
 {
-    private readonly ILogger<Worker> _logger;
+    private readonly ILogger<CronWorker> _logger;
     private readonly IBus _bus;
 
-    public Worker(ILogger<Worker> logger, IBus bus)
+    public CronWorker(ILogger<CronWorker> logger, IBus bus)
     {
         _logger = logger;
         _bus = bus;

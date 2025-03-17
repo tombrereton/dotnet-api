@@ -1,4 +1,5 @@
 using MassTransit;
+using Worker;
 using Worker.Consumers;
 
 var builder = Host.CreateApplicationBuilder(args);
@@ -13,7 +14,7 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
-builder.Services.AddHostedService<Worker.Worker>();
+builder.Services.AddHostedService<CronWorker>();
 
 var host = builder.Build();
 host.Run();

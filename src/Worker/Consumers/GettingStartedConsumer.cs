@@ -1,5 +1,6 @@
 using MassTransit;
 using Teeitup.Core.Contracts;
+// ReSharper disable ClassNeverInstantiated.Global
 
 namespace Worker.Consumers;
 
