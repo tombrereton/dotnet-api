@@ -10,7 +10,8 @@ var database = sqlserver
     .AddDatabase("database");
 
 var messageBroker = builder
-    .AddRabbitMQ("messaging");
+    .AddRabbitMQ("messaging", password: passwordParameter)
+    .WithManagementPlugin(15672);
 
 builder.AddProject<Projects.Worker>("Worker")
     .WithReference(database)

@@ -20,10 +20,10 @@ public class CronWorker : BackgroundService
         {
             if (_logger.IsEnabled(LogLevel.Information))
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+                // _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
             }
             
-            await _bus.Publish(new GettingStarted("Hello, World!"), stoppingToken);
+            // await _bus.Publish(new GettingStarted("Hello, World!"), stoppingToken);
 
             await Task.Delay(1000, stoppingToken);
         }

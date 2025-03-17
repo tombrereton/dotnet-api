@@ -6,6 +6,7 @@ var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<GettingStartedConsumer>();
+    x.AddConsumer<UserAccountCreatedConsumer>();
     x.UsingRabbitMq((context, cfg) =>
     {
         var connectionString = builder.Configuration.GetConnectionString("messaging");

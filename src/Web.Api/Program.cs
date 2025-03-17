@@ -1,6 +1,7 @@
 using Carter;
 using MassTransit;
 using Teeitup.Core.Application;
+using Teeitup.Core.Contracts;
 using Teeitup.Core.Infrastructure;
 using Teeitup.Core.Infrastructure.Database;
 using Teeitup.Core.Infrastructure.Extensions;
@@ -21,6 +22,7 @@ builder.Services.AddProblemDetailsForTeeitup();
 builder.Services.AddMassTransit(x =>
 {
     var connectionString = builder.Configuration.GetConnectionString("messaging");
+    x.SetKebabCaseEndpointNameFormatter();
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(connectionString);
