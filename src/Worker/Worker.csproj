@@ -2,19 +2,25 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <LangVersion>11</LangVersion>
-        <RootNamespace>Teeitup.Worker</RootNamespace>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-Worker-bf22181c-c34a-4316-ad12-bde288f3872a</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.3.6" />
-        <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.6" />
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-        <PackageReference Include="MassTransit" Version="[8.*,9.0)" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="8.3.7" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Core\Core.csproj" />
-      <ProjectReference Include="..\ServiceDefaults\ServiceDefaults.csproj" />
+      <ProjectReference Include="..\src\Core\Core.csproj" />
     </ItemGroup>
 </Project>
