@@ -1,16 +1,16 @@
 using System.Net;
 using System.Net.Http.Json;
 using FluentAssertions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using Teeitup.Core.Application.UserAccounts;
 using Teeitup.Core.Domain.Accounts;
 using Teeitup.Core.Infrastructure.Database;
-using Teeitup.Web.Api.Features.UserAccounts;
+using Teeitup.Web.Api.Endpoints;
 using Teeitup.Web.Api.IntegrationTests.Helpers;
 
-namespace Teeitup.Web.Api.IntegrationTests.Features;
+namespace Teeitup.Web.Api.IntegrationTests.Endpoints;
 
 public class GetAccountShould(TeeitupWebApplicationFactory<Program> factory)
     : IClassFixture<TeeitupWebApplicationFactory<Program>>

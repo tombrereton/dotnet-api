@@ -19,20 +19,18 @@ public class AppointerDbContext : DbContext
         _publisher = publisher;
     }
 
+    public virtual required DbSet<UserAccount> UserAccounts { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppointerDbContext).Assembly);
         base.OnModelCreating(modelBuilder);
     }
 
-    public virtual DbSet<UserAccount> UserAccounts { get; set; }
-
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
     {
         var result = await base.SaveChangesAsync(cancellationToken);
-
         await PublishDomainEventsAsync();
-
         return result;
     }
 

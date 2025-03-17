@@ -1,5 +1,4 @@
 using Carter;
-using FluentValidation;
 using Microsoft.AspNetCore.Http.Features;
 
 namespace Teeitup.Web.Api.Endpoints;
