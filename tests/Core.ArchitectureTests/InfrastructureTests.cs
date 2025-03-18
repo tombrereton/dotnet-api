@@ -14,9 +14,9 @@ namespace Teeitup.Core.ArchitectureTests
         {
             var result = Types.InAssembly(_coreAssembly)
                 .That()
-                .ResideInNamespace("Teeitup.Web.Api.Infrastructure")
+                .ResideInNamespace("Teeitup.Core.Infrastructure")
                 .Should()
-                .NotHaveDependencyOn("Teeitup.Web.Api.Features")
+                .NotHaveDependencyOn("Teeitup.Web.Api")
                 .GetResult();
 
             result.FailingTypes?.Should().BeSameAs([]);
