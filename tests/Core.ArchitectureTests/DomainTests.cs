@@ -8,7 +8,7 @@ namespace Teeitup.Core.ArchitectureTests
     public class DomainClassesShould
     {
         private readonly Assembly _coreAssembly = typeof(IUserAccountRepository).Assembly;
-
+        
         [Fact]
         public void NotDependOnInfrastructure()
         {

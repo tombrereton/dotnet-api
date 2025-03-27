@@ -23,7 +23,7 @@ public sealed class UserAccount : Entity
     {
         var userAccount = new UserAccount(Guid.NewGuid(), fullName, true, false);
 
-        userAccount.RaiseDomainEvent(new UserAccountCreatedDomainEvent(userAccount.Id));
+        userAccount.RaiseDomainEvent(new UserAccountCreatedDomainEvent(userAccount.Id, userAccount.FullName));
 
         return userAccount;
     }

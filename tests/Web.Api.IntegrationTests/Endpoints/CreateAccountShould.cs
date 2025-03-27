@@ -42,7 +42,7 @@ public class CreateAccountShould(TeeitupWebApplicationFactory<Program> factory)
         newUserAccount.Should().NotBeNull();
         newUserAccount?.FullName.Should().Be(fullName);
     }
-    
+
     [Fact]
     public async Task ShowProblemDetailsWhenInvalid()
     {
@@ -63,39 +63,6 @@ public class CreateAccountShould(TeeitupWebApplicationFactory<Program> factory)
         response.Detail.Should().Be("'Full Name' must not be empty.");
     }
 
-    // [Fact]
-    // public async Task CreateDefaultCalendar()
-    // {
-    //     // arrange
-    //     var client = _factory.CreateClient();
-    //     var url = "api/accounts";
-    //     var fullName = "Default Calendar" + Guid.NewGuid();
-    //     var request = new CreateAccount.Command(FullName: fullName);
-    //
-    //     // act
-    //     var result = await client.PostAsJsonAsync(url, request);
-    //
-    //     // assert
-    //     result.StatusCode.Should().Be(HttpStatusCode.OK);
-    //     var response = await result.Content.ReadFromJsonAsync<CreateAccount.Response>();
-    //     response.Should().NotBeNull();
-    //     response!.Id.Should().NotBeEmpty();
-    //
-    //     using var scope = _factory.Services.CreateScope();
-    //     var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
-    //     var newUserAccount = await dbContext
-    //         .UserAccounts
-    //         .Include(db => db.Calendars)
-    //         .FirstAsync(x => x.Id == response.Id);
-    //
-    //     newUserAccount.Should().NotBeNull();
-    //     newUserAccount?.FullName.Should().Be(fullName);
-    //
-    //     var defaultCalendar = newUserAccount?.Calendars.FirstOrDefault();
-    //     defaultCalendar.Should().NotBeNull();
-    //     defaultCalendar?.Name.Should().Be("Default");
-    // }
-    
     [Fact]
     public async Task PublishUserAccountCreatedIntegrationEvent()
     {
@@ -112,6 +79,11 @@ public class CreateAccountShould(TeeitupWebApplicationFactory<Program> factory)
 
         // assert
         result.StatusCode.Should().Be(HttpStatusCode.OK);
-        testHarness.Published.Select<UserAccountCreatedIntegrationEvent>().Any().Should().BeTrue();
+        var response = await result.Content.ReadFromJsonAsync<CreateAccount.Response>();
+        var integrationEvent = testHarness.Published
+        .Select<UserAccountCreatedIntegrationEvent>()
+        .First(x => x.Context.Message.UserAccountId == response?.Id)
+        .Context.Message;
+        integrationEvent.FullName.Should().Be(fullName);
     }
 }

@@ -10,7 +10,7 @@ public class UserAccountCreatedConsumer(ILogger<UserAccountCreatedConsumer> logg
 {
     public Task Consume(ConsumeContext<UserAccountCreatedIntegrationEvent> context)
     {
-        logger.LogInformation("Received user account created: {Message}", context.Message.Message);
+        logger.LogInformation("Received user account created: {Message}", context.Message.FullName);
         return Task.CompletedTask;
     }
 }

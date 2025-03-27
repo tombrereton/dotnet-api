@@ -7,7 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Teeitup.Core.Application.UserAccounts;
 using Teeitup.Core.Domain.Accounts;
 using Teeitup.Core.Infrastructure.Database;
-using Teeitup.Web.Api.Endpoints;
 using Teeitup.Web.Api.IntegrationTests.Helpers;
 
 namespace Teeitup.Web.Api.IntegrationTests.Endpoints;

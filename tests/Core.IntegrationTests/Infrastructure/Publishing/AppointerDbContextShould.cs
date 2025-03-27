@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Teeitup.Core.Domain.Accounts;
 using Teeitup.Core.Infrastructure.Database;
 
-namespace Teeitup.Web.Api.IntegrationTests.Infrastructure.Publishing;
+namespace Core.IntegrationTests.Infrastructure.Publishing;
 
 [Collection("MsSqlCollection")]
 public class AppointerDbContextShould : MsSqlFixture

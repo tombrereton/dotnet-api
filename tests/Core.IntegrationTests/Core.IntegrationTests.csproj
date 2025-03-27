@@ -31,4 +31,8 @@
       <ProjectReference Include="..\..\src\Core\Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Application\UserAccounts\" />
+    </ItemGroup>
+
 </Project>
