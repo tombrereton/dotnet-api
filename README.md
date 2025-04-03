@@ -29,6 +29,7 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
 - [x] Architecture tests to enforce intended architecture
   e.g. [Domain layer cannot depend on Infrastructure or Features](/tests/Web.Api.ArchitectureTests/DomainTests.cs)
 - [x] [Vertical Slice Architecture](/src/Web.Api/Features/UserAccounts/CreateAccount.cs)
+- [x] Use [problem details](/src/Web.Api/Features/UserAccounts/CreateAccount.cs#L23) when returning bad responses
 - [ ] Validation
 - [x] Use Repositories to enforce
   write [data access through Aggregate Roots](/src/Web.Api/Infrastructure/Repositories/Repository.cs)
@@ -79,6 +80,10 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
   becomes less cohesive, and consequently becomes hard to maintain or modify. We also use Mediatr to prevent constructor
   explosion and implement cross-cutting concerns for both the Api and Background Worker. It's important to colocate
   Mediatr Handlers with their corresponding Request and Response objects.
+- _November 2024_: For writing to the database, use the **Repository Pattern** instead of naked EF Core. We use
+  Repositories for a number of reasons; we enforce data access through Aggregate Roots, we enable simple
+  unit testing of Domain logic by testing against an interface, and we keep a clean Domain layer without any
+  infrastructure code so when changing databases etc, only the repository code would change not the Domain code.  
 - _February 2025 (Exploring)_: Use [Discriminated Unions](https://github.com/mcintyre321/OneOf) (previously explored
   [Result](https://www.milanjovanovic.tech/blog/functional-error-handling-in-dotnet-with-the-result-pattern)
   objects) for control flow instead of exceptions. In common code paths like validation or business rules use Oneof<
@@ -93,6 +98,7 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
   because "DomainEvent" is redundant and removing it makes the code easier to read. We drop it on domain events because
   they are more common than Integration events. For Integration Events use the convention
   NounVerbPastTenseIntegrationEvent e.g. CalendarCreatedIntegrationEvent, CalendarUpdatedIntegrationEvent.
+
 
 ## Prerequisites
 
