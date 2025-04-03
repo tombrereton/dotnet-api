@@ -6,9 +6,9 @@ using Teeitup.Core.Domain.Accounts;
 
 namespace Teeitup.Core.Application.UserAccounts;
 
-public class UserAccountCreatedDomainEventHandler(ILogger<UserAccountCreatedDomainEventHandler> logger, IBus bus) : INotificationHandler<UserAccountCreatedDomainEvent>
+public class UserAccountCreatedHandler(ILogger<UserAccountCreatedHandler> logger, IBus bus) : INotificationHandler<UserAccountCreated>
 {
-    public async Task Handle(UserAccountCreatedDomainEvent notification, CancellationToken cancellationToken)
+    public async Task Handle(UserAccountCreated notification, CancellationToken cancellationToken)
     {
         logger.LogInformation("Handling UserAccountCreatedDomainEvent for UserAccountId: {UserAccountId}", notification.UserAccountId);
         var message = new UserAccountCreatedIntegrationEvent(notification.UserAccountId, notification.FullName);

@@ -88,6 +88,11 @@ I want to have a starter template for building enterprise grade Dotnet Apis. Thi
   and [Microsoft may add them to C#](https://github.com/dotnet/csharplang/blob/main/proposals/TypeUnions.md).
 - _March 2025_: Use RabbitMq for local development (e.g. Aspire, Testcontainers) as the Azure Service Bus emulator does
   not support the Admin Api, which Masstransit requires for creating queues and topics.
+- _March 2025_: For domain events use the convention, NounVerbPastTense e.g. CalendarCreated, CalendarUpdated, etc.
+  Instead of using NounVerbPastTenseDomainEvent e.g. CalendarCreatedDomainEvent, CalendarUpdatedDomainEvent. This is
+  because "DomainEvent" is redundant and removing it makes the code easier to read. We drop it on domain events because
+  they are more common than Integration events. For Integration Events use the convention
+  NounVerbPastTenseIntegrationEvent e.g. CalendarCreatedIntegrationEvent, CalendarUpdatedIntegrationEvent.
 
 ## Prerequisites
 

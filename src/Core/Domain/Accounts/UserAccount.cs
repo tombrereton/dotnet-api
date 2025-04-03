@@ -23,7 +23,7 @@ public sealed class UserAccount : Entity
     {
         var userAccount = new UserAccount(Guid.NewGuid(), fullName, true, false);
 
-        userAccount.RaiseDomainEvent(new UserAccountCreatedDomainEvent(userAccount.Id, userAccount.FullName));
+        userAccount.RaiseDomainEvent(new UserAccountCreated(userAccount.Id, userAccount.FullName));
 
         return userAccount;
     }
@@ -33,6 +33,6 @@ public sealed class UserAccount : Entity
         Guard.IsNotNull(calendar, nameof(calendar));
         Calendars.Add(calendar);
 
-        RaiseDomainEvent(new DefaultCalendarAddedDomainEvent(this.Id, calendar.Id));
+        RaiseDomainEvent(new DefaultCalendarAdded(this.Id, calendar.Id));
     }
 }
