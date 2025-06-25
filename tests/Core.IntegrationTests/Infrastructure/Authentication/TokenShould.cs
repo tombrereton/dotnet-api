@@ -10,7 +10,10 @@ public class TokenShould
 {
     private const string Issuer = "TestIssuer";
     private const string Audience = "TestAudience";
-    private const string Secret = "super secret key that should be stored in a secure place and not in code";
+
+    private const string Secret =
+        "super secret key that should be stored in a secure place and not in code like this for real applications";
+
     private const string JwtPattern = @"^[A-Za-z0-9-_]+?\.[A-Za-z0-9-_]+?\.[A-Za-z0-9-_]+$";
 
 
@@ -143,7 +146,7 @@ public class TokenShould
         // this symmetric key is used to both sign and verify the token 
         // a public and private key pair can be used instead for asymmetric encryption
         var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(Secret));
-        var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+        var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
         var token = new JwtSecurityToken(
             issuer: Issuer,
             audience: Audience,

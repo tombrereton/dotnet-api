@@ -13,7 +13,7 @@ public class AppointerDbContextShould : MsSqlFixture
     public async Task PersistUserAccount()
     {
         // arrange
-        var dbContext = Services.GetRequiredService<AppointerDbContext>();
+        var dbContext = Services.GetRequiredService<TeeitupDbContext>();
         var userAccount = UserAccount.Create("John Doe");
 
         // act

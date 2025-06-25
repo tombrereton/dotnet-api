@@ -12,10 +12,11 @@ using Teeitup.Web.Api.IntegrationTests.Helpers;
 
 namespace Teeitup.Web.Api.IntegrationTests.Endpoints;
 
-public class CreateAccountShould(TeeitupWebApplicationFactory<Program> factory)
-    : IClassFixture<TeeitupWebApplicationFactory<Program>>
+public class CreateAccountShould(WebApiFactory<Program> factory)
+    : IClassFixture<WebApiFactory<Program>>
 {
-    private readonly WebApplicationFactory<Program> _factory = factory;
+    // ReSharper disable once ReplaceWithPrimaryConstructorParameter
+    private readonly WebApiFactory<Program> _factory = factory;
 
     [Fact]
     public async Task CreateAndPersistAccount()
@@ -37,7 +38,7 @@ public class CreateAccountShould(TeeitupWebApplicationFactory<Program> factory)
         response.FullName.Should().Be(fullName);
 
         using var scope = _factory.Services.CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
+        var dbContext = scope.ServiceProvider.GetRequiredService<TeeitupDbContext>();
         var newUserAccount = await dbContext.UserAccounts.FindAsync(response.Id);
         newUserAccount.Should().NotBeNull();
         newUserAccount?.FullName.Should().Be(fullName);

@@ -34,7 +34,7 @@ public class MsSqlFixture : IAsyncLifetime
             .AddMassTransitTestHarness()
             .BuildServiceProvider();
 
-        var db = Services.GetRequiredService<AppointerDbContext>();
+        var db = Services.GetRequiredService<TeeitupDbContext>();
         await db.Database.EnsureCreatedAsync();
     }
 

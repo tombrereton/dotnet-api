@@ -5,16 +5,16 @@ using Teeitup.Core.Domain.Accounts;
 
 namespace Teeitup.Core.Infrastructure.Database;
 
-public class AppointerDbContext : DbContext
+public class TeeitupDbContext : DbContext
 {
     private readonly IPublisher _publisher;
 
-    public AppointerDbContext(IPublisher publisher)
+    public TeeitupDbContext(IPublisher publisher)
     {
         _publisher = publisher;
     }
 
-    public AppointerDbContext(DbContextOptions<AppointerDbContext> options, IPublisher publisher) : base(options)
+    public TeeitupDbContext(DbContextOptions<TeeitupDbContext> options, IPublisher publisher) : base(options)
     {
         _publisher = publisher;
     }
@@ -23,7 +23,7 @@ public class AppointerDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppointerDbContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TeeitupDbContext).Assembly);
         base.OnModelCreating(modelBuilder);
     }
 

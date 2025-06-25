@@ -8,13 +8,28 @@ namespace Teeitup.Core.ArchitectureTests
     public class DomainClassesShould
     {
         private readonly Assembly _coreAssembly = typeof(IUserAccountRepository).Assembly;
-        
+        private const string DomainNamespace = "Teeitup.Core.Domain";
+
+        [Fact]
+        public void HaveSomeClassesInNamespace()
+        {
+            var result = Types.InAssembly(_coreAssembly)
+                .That()
+                .ResideInNamespace(DomainNamespace)
+                .Should()
+                .NotBePublic()
+                .GetResult();
+
+            result.FailingTypes?.Should().NotBeNull();
+            result.FailingTypes?.Should().HaveCountGreaterThanOrEqualTo(1);
+        }
+
         [Fact]
         public void NotDependOnInfrastructure()
         {
             var result = Types.InAssembly(_coreAssembly)
                 .That()
-                .ResideInNamespace("Teeitup.Core.Domain")
+                .ResideInNamespace(DomainNamespace)
                 .Should()
                 .NotHaveDependencyOn("Teeitup.Core.Infrastructure")
                 .GetResult();
@@ -27,7 +42,7 @@ namespace Teeitup.Core.ArchitectureTests
         {
             var result = Types.InAssembly(_coreAssembly)
                 .That()
-                .ResideInNamespace("Teeitup.Core.Domain")
+                .ResideInNamespace(DomainNamespace)
                 .Should()
                 .NotHaveDependencyOn("Teeitup.Web.Api")
                 .GetResult();

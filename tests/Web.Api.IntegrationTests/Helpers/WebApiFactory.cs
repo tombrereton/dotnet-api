@@ -11,7 +11,7 @@ using Testcontainers.MsSql;
 namespace Teeitup.Web.Api.IntegrationTests.Helpers;
 
 // ReSharper disable once ClassNeverInstantiated.Global
-public class TeeitupWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLifetime
+public class WebApiFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLifetime
     where TProgram : class
 {
     private readonly MsSqlContainer _msSqlContainer = new MsSqlBuilder()
@@ -21,19 +21,17 @@ public class TeeitupWebApplicationFactory<TProgram> : WebApplicationFactory<TPro
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        // builder.ConfigureServices(services =>
-        // {
-        //     services.AddMassTransitTestHarness();
-        // });
         
+        builder.UseSetting("ConnectionStrings:database", _msSqlContainer.GetConnectionString());
+        builder.ConfigureTestServices(services => services.EnsureDbCreated<TeeitupDbContext>());
         builder.ConfigureTestServices(services =>
         {
-            services.RemoveDbContext<AppointerDbContext>();
-            services.AddDbContext<AppointerDbContext>(options =>
+            services.RemoveDbContext<TeeitupDbContext>();
+            services.AddDbContext<TeeitupDbContext>(options =>
             {
                 options.UseSqlServer(_msSqlContainer.GetConnectionString());
             });
-            services.EnsureDbCreated<AppointerDbContext>();
+            services.EnsureDbCreated<TeeitupDbContext>();
             services.AddMediator();
             services.AddMassTransitTestHarness();
         });

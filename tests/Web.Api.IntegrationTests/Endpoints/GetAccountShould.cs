@@ -11,8 +11,8 @@ using Teeitup.Web.Api.IntegrationTests.Helpers;
 
 namespace Teeitup.Web.Api.IntegrationTests.Endpoints;
 
-public class GetAccountShould(TeeitupWebApplicationFactory<Program> factory)
-    : IClassFixture<TeeitupWebApplicationFactory<Program>>
+public class GetAccountShould(WebApiFactory<Program> factory)
+    : IClassFixture<WebApiFactory<Program>>
 {
     private readonly WebApplicationFactory<Program> _factory = factory;
 
@@ -25,7 +25,7 @@ public class GetAccountShould(TeeitupWebApplicationFactory<Program> factory)
         var cancellationToken = cts.Token;
 
         using var scope = _factory.Services.CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<AppointerDbContext>();
+        var dbContext = scope.ServiceProvider.GetRequiredService<TeeitupDbContext>();
         var userAccount = UserAccount.Create("John Doe");
         await dbContext.UserAccounts.AddAsync(userAccount, cancellationToken);
         await dbContext.SaveChangesAsync(cancellationToken);

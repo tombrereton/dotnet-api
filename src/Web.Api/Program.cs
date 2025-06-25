@@ -36,7 +36,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    builder.Services.EnsureDbCreated<AppointerDbContext>();
+    builder.Services.EnsureDbCreated<TeeitupDbContext>();
 }
 
 app.MapCarter();
@@ -45,5 +45,6 @@ app.Run();
 
 namespace Teeitup.Web.Api
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class Program;
 }

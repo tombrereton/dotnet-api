@@ -6,9 +6,9 @@ namespace Teeitup.Core.Infrastructure.Repositories;
 
 internal abstract class Repository<T> where T : Entity
 {
-    protected readonly AppointerDbContext DbContext;
+    protected readonly TeeitupDbContext DbContext;
 
-    protected Repository(AppointerDbContext dbContext)
+    protected Repository(TeeitupDbContext dbContext)
     {
         DbContext = dbContext;
     }
