@@ -3,5 +3,5 @@
 [CollectionDefinition("MsSqlCollection")]
 public class MsSqlCollection : ICollectionFixture<MsSqlFixture>
 {
-    
+
 }

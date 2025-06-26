@@ -9,20 +9,24 @@ using Teeitup.Core.Infrastructure.Database;
 
 namespace Worker.Consumers;
 
-public class UserAccountCreatedConsumer(ILogger<UserAccountCreatedConsumer> logger, TeeitupDbContext dbContext)
-    : IConsumer<UserAccountCreatedIntegrationEvent>
+public class UserAccountCreatedConsumer(
+    ILogger<UserAccountCreatedConsumer> logger,
+    TeeitupDbContext dbContext
+) : IConsumer<UserAccountCreatedIntegrationEvent>
 {
     public async Task Consume(ConsumeContext<UserAccountCreatedIntegrationEvent> context)
     {
         logger.LogInformation("Received user account created: {Message}", context.Message.FullName);
-        
+
         var userAccount = await dbContext
-            .UserAccounts
-            .Include(x => x.Calendars)
-            .FirstOrDefaultAsync(x => x.Id == context.Message.UserAccountId, context.CancellationToken);
-        
+            .UserAccounts.Include(x => x.Calendars)
+            .FirstOrDefaultAsync(
+                x => x.Id == context.Message.UserAccountId,
+                context.CancellationToken
+            );
+
         ArgumentNullException.ThrowIfNull(userAccount, nameof(userAccount));
-        
+
         var calendar = Calendar.Create("default");
         userAccount.AddCalendar(calendar);
 

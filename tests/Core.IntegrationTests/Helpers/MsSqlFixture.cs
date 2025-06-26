@@ -14,7 +14,7 @@ public class MsSqlFixture : IAsyncLifetime
         .WithImage("mcr.microsoft.com/mssql/server:2022-CU13-ubuntu-22.04")
         .WithCleanUp(true)
         .Build();
-    
+
     protected ServiceProvider Services = null!;
 
     public async Task InitializeAsync()
@@ -22,11 +22,11 @@ public class MsSqlFixture : IAsyncLifetime
         await _msSqlContainer.StartAsync();
 
         var keyValuePairs = new KeyValuePair<string, string?>[]
-            { new("ConnectionStrings:Database", _msSqlContainer.GetConnectionString()) };
+        {
+            new("ConnectionStrings:Database", _msSqlContainer.GetConnectionString()),
+        };
 
-        var config = new ConfigurationBuilder()
-            .AddInMemoryCollection(keyValuePairs)
-            .Build();
+        var config = new ConfigurationBuilder().AddInMemoryCollection(keyValuePairs).Build();
 
         Services = new ServiceCollection()
             .AddApplication()

@@ -2,6 +2,4 @@
 
 namespace Teeitup.Core.Domain.Abstractions;
 
-public interface IDomainEvent : INotification
-{
-}
+public interface IDomainEvent : INotification { }

@@ -13,7 +13,8 @@ namespace Teeitup.Core.ArchitectureTests
         [Fact]
         public void HaveSomeClassesInNamespace()
         {
-            var result = Types.InAssembly(_coreAssembly)
+            var result = Types
+                .InAssembly(_coreAssembly)
                 .That()
                 .ResideInNamespace(DomainNamespace)
                 .Should()
@@ -27,7 +28,8 @@ namespace Teeitup.Core.ArchitectureTests
         [Fact]
         public void NotDependOnInfrastructure()
         {
-            var result = Types.InAssembly(_coreAssembly)
+            var result = Types
+                .InAssembly(_coreAssembly)
                 .That()
                 .ResideInNamespace(DomainNamespace)
                 .Should()
@@ -40,7 +42,8 @@ namespace Teeitup.Core.ArchitectureTests
         [Fact]
         public void NotDependOnFeatures()
         {
-            var result = Types.InAssembly(_coreAssembly)
+            var result = Types
+                .InAssembly(_coreAssembly)
                 .That()
                 .ResideInNamespace(DomainNamespace)
                 .Should()

@@ -8,9 +8,8 @@ public abstract class Entity
     {
         Id = id;
     }
-    protected Entity()
-    {
-    }
+
+    protected Entity() { }
 
     public Guid Id { get; set; }
     public List<IDomainEvent> DomainEvents => _domainEvents.ToList();
@@ -20,9 +19,8 @@ public abstract class Entity
         _domainEvents.Clear();
     }
 
-    protected void RaiseDomainEvent(IDomainEvent domainEvent) 
+    protected void RaiseDomainEvent(IDomainEvent domainEvent)
     {
         _domainEvents.Add(domainEvent);
     }
-
 }

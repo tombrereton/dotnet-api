@@ -16,7 +16,6 @@ public class TokenShould
 
     private const string JwtPattern = @"^[A-Za-z0-9-_]+?\.[A-Za-z0-9-_]+?\.[A-Za-z0-9-_]+$";
 
-
     [Fact]
     public void BeCreated()
     {
@@ -45,7 +44,7 @@ public class TokenShould
             ValidIssuer = Issuer,
             ValidateAudience = true,
             ValidAudience = Audience,
-            ValidateLifetime = true
+            ValidateLifetime = true,
         };
         var handler = new JwtSecurityTokenHandler();
 
@@ -143,7 +142,7 @@ public class TokenShould
             new(ClaimTypes.Role, "Admin"),
         };
 
-        // this symmetric key is used to both sign and verify the token 
+        // this symmetric key is used to both sign and verify the token
         // a public and private key pair can be used instead for asymmetric encryption
         var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(Secret));
         var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);

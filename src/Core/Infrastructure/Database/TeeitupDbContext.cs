@@ -14,7 +14,8 @@ public class TeeitupDbContext : DbContext
         _publisher = publisher;
     }
 
-    public TeeitupDbContext(DbContextOptions<TeeitupDbContext> options, IPublisher publisher) : base(options)
+    public TeeitupDbContext(DbContextOptions<TeeitupDbContext> options, IPublisher publisher)
+        : base(options)
     {
         _publisher = publisher;
     }

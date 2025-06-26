@@ -15,7 +15,7 @@ public class GetAccountEndpoint : ICarterModule
 
             return result.Match(
                 response => Results.Ok(response),
-                
+
                 userAccountNotFound => Results.Problem(
                     statusCode: StatusCodes.Status404NotFound,
                     title: nameof(GetAccount.UserAccountNotFound),

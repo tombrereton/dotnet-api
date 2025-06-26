@@ -15,8 +15,10 @@ public static class GetAccount
     public sealed class Handler(IUserAccountRepository repository)
         : IRequestHandler<Query, OneOf<Response, UserAccountNotFound>>
     {
-        public async Task<OneOf<Response, UserAccountNotFound>> Handle(Query request,
-                                                                       CancellationToken cancellationToken)
+        public async Task<OneOf<Response, UserAccountNotFound>> Handle(
+            Query request,
+            CancellationToken cancellationToken
+        )
         {
             var account = await repository.GetAsync(request.Id, cancellationToken);
 

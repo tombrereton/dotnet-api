@@ -9,11 +9,12 @@ namespace Teeitup.Core.ArchitectureTests
     {
         private const string InfrastructureNamespace = "Teeitup.Core.Infrastructure";
         private readonly Assembly _coreAssembly = typeof(IUserAccountRepository).Assembly;
-        
+
         [Fact]
         public void HaveSomeClassesInNamespace()
         {
-            var result = Types.InAssembly(_coreAssembly)
+            var result = Types
+                .InAssembly(_coreAssembly)
                 .That()
                 .ResideInNamespace(InfrastructureNamespace)
                 .Should()
@@ -27,7 +28,8 @@ namespace Teeitup.Core.ArchitectureTests
         [Fact]
         public void DomainClasses_ShouldNotDependOnInfrastructure()
         {
-            var result = Types.InAssembly(_coreAssembly)
+            var result = Types
+                .InAssembly(_coreAssembly)
                 .That()
                 .ResideInNamespace(InfrastructureNamespace)
                 .Should()

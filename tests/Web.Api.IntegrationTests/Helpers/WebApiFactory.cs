@@ -21,7 +21,7 @@ public class WebApiFactory<TProgram> : WebApplicationFactory<TProgram>, IAsyncLi
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        
+
         builder.UseSetting("ConnectionStrings:database", _msSqlContainer.GetConnectionString());
         builder.ConfigureTestServices(services => services.EnsureDbCreated<TeeitupDbContext>());
         builder.ConfigureTestServices(services =>

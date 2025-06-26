@@ -4,7 +4,8 @@ using Teeitup.Core.Infrastructure.Database;
 
 namespace Teeitup.Core.Infrastructure.Repositories;
 
-internal abstract class Repository<T> where T : Entity
+internal abstract class Repository<T>
+    where T : Entity
 {
     protected readonly TeeitupDbContext DbContext;
 
@@ -15,9 +16,7 @@ internal abstract class Repository<T> where T : Entity
 
     public async Task<T?> GetAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await DbContext
-            .Set<T>()
-            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        return await DbContext.Set<T>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 
     public async Task AddAsync(T entity, CancellationToken cancellationToken)

@@ -23,11 +23,13 @@ builder.Services.AddMassTransit(x =>
 {
     var connectionString = builder.Configuration.GetConnectionString("messaging");
     x.SetKebabCaseEndpointNameFormatter();
-    x.UsingRabbitMq((context, cfg) =>
-    {
-        cfg.Host(connectionString);
-        cfg.ConfigureEndpoints(context);
-    });
+    x.UsingRabbitMq(
+        (context, cfg) =>
+        {
+            cfg.Host(connectionString);
+            cfg.ConfigureEndpoints(context);
+        }
+    );
 });
 var app = builder.Build();
 app.MapDefaultEndpoints();

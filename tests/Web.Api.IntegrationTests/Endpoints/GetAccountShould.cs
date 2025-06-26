@@ -1,9 +1,9 @@
-using System.Net;
-using System.Net.Http.Json;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net;
+using System.Net.Http.Json;
 using Teeitup.Core.Application.UserAccounts;
 using Teeitup.Core.Domain.Accounts;
 using Teeitup.Core.Infrastructure.Database;

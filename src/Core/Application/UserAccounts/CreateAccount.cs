@@ -25,8 +25,10 @@ public static class CreateAccount
     public sealed class Handler(IUserAccountRepository repository, IValidator<Command> validator)
         : IRequestHandler<Command, OneOf<Response, InvalidUserAccount>>
     {
-        public async Task<OneOf<Response, InvalidUserAccount>> Handle(Command request,
-                                                                      CancellationToken cancellationToken)
+        public async Task<OneOf<Response, InvalidUserAccount>> Handle(
+            Command request,
+            CancellationToken cancellationToken
+        )
         {
             var validationResult = await validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)

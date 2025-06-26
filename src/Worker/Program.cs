@@ -13,12 +13,14 @@ builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<GettingStartedConsumer>();
     x.AddConsumer<UserAccountCreatedConsumer>();
-    x.UsingRabbitMq((context, cfg) =>
-    {
-        var connectionString = builder.Configuration.GetConnectionString("messaging");
-        cfg.Host(connectionString);
-        cfg.ConfigureEndpoints(context);
-    });
+    x.UsingRabbitMq(
+        (context, cfg) =>
+        {
+            var connectionString = builder.Configuration.GetConnectionString("messaging");
+            cfg.Host(connectionString);
+            cfg.ConfigureEndpoints(context);
+        }
+    );
 });
 
 builder.Services.AddHostedService<CronWorker>();

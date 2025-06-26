@@ -22,7 +22,7 @@ public class CronWorker : BackgroundService
             {
                 // _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
             }
-            
+
             // await _bus.Publish(new GettingStarted("Hello, World!"), stoppingToken);
 
             await Task.Delay(1000, stoppingToken);
